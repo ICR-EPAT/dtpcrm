@@ -32,8 +32,6 @@
 #' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 #' York: Chapman & Hall/CRC Press.
 #'
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#'
 #' @examples
 #' prior  <- c(0.1, 0.3, 0.5)
 #' target <- 0.2

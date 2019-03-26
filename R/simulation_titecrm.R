@@ -40,8 +40,6 @@
 #' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 #' York: Chapman & Hall/CRC Press.
 #'
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#'
 #' @examples
 #' prior  <- c(0.1, 0.3, 0.5)
 #' target <- 0.2
@@ -51,8 +49,10 @@
 #' obswin = 80
 #'
 #' applied_titecrm_sim(true_tox = true_tox, prior = prior, target = target,
-#'                               max_sample_size = 21, first_dose = first_dose, num_sims = num_sims, cohort_size = 3,
-#'                               obswin = obswin, minfu = 20, recrate = 3, dose_func = applied_titecrm)
+#'                               max_sample_size = 21, first_dose = first_dose,
+#'                               num_sims = num_sims, cohort_size = 3,
+#'                               obswin = obswin, minfu = 20, recrate = 3,
+#'                               dose_func = applied_titecrm)
 #'
 #' @keywords CRM Simulations TITE dtpcrm
 #'

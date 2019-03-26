@@ -45,8 +45,5 @@ O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual
 Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 York: Chapman & Hall/CRC Press.
 }
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \keyword{CRM}
 \keyword{dtpcrm}

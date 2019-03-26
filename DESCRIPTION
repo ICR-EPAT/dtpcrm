@@ -6,11 +6,21 @@ Authors@R: c(person("Christina", "Yap", email = "C.Yap@bham.ac.uk",
                   role = c("aut", "cre")),
              person("Daniel", "Slade", email = "D.Slade@bham.ac.uk",
                   role = c("aut")), 
-             person("Kristian", "Brock", email = "k.brock@bham.ac.uk"),      
+             person("Kristian", "Brock", email = "k.brock@bham.ac.uk",
+                  role = c("aut")),
              person("Yi", "Pan", email = "ypan1988@gmail.com",
                   role = c("aut")))
 Maintainer: Christina Yap <C.Yap@bham.ac.uk>
-Description: Building on the dfcrm R package, the dtpcrm package provides the Dose Transition Pathways (DTP) to project in advance the doses recommended by a model-based design for subsequent patients (stay, escalate, de-escalate or stop early) using all the accumulated toxicity information. DTP can be used as a design and an operational tool and can be displayed as a table or flow diagram. The dtpcrm package also provides the modified Continual Reassessment Method (CRM) and Time to event CRM (TiTE-CRM) with added practical considerations to allow stopping early when: 1.there is sufficient evidence that the lowest dose is too toxic and/or 2.there is a sufficient number of patients dosed at the maximum tolerated dose
+Description: Building on the dfcrm R package, the dtpcrm package provides the
+    Dose Transition Pathways (DTP) to project in advance the doses recommended
+    by a model-based design for subsequent patients (stay, escalate, de-escalate
+    or stop early) using all the accumulated toxicity information. DTP can be
+    used as a design and an operational tool and can be displayed as a table or
+    flow diagram. The dtpcrm package also provides the modified Continual
+    Reassessment Method (CRM) and Time to event CRM (TiTE-CRM) with added
+    practical considerations to allow stopping early when: 1.there is sufficient
+    evidence that the lowest dose is too toxic and/or 2.there is a sufficient
+    number of patients dosed at the maximum tolerated dose
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true

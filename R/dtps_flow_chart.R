@@ -21,6 +21,42 @@
 #### based on DLT outcomes from  Cohort (X) and (X+1) ####
 #### Leading to Recommended Doses for Cohort (X+2)    ####
 
+#' @title Produce DTP flow diagram
+#'
+#' @description dtpflow will produce a flow diagram of the possible paths for
+#'     the next three cohorts of patients.
+#'
+#' @usage dtpflow(dtptable, cohort.labels = c('C1', 'C2', 'C3'))
+#'
+#' @param dtptable a dataframe produced by calculate_dtps.
+#' @param cohort.labels A vector of length 3, containing character strings for
+#'     the cohort labels.
+#'
+#' @details The function will produce a visual flow diagram for the first three
+#'     cohorts of the provided dataframe, a colour system is used to represent
+#'     escalation / de-escalation.
+#'
+#' @examples
+#'
+#' prior  <- c(0.1, 0.2, 0.5)
+#' target <- 0.15
+#' prev_tox <- c(0, 0, 0)
+#' prev_dose <- c(2, 2, 2)
+#' cohort_sizes <- c(2, 3)
+#'
+#' next_dose = applied_crm(prior = prior, target = target,
+#'                         tox = prev_tox, level = prev_dose)$mtd
+#'
+#' dose_func <- applied_crm
+#'
+#' dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
+#'                       prev_dose = prev_dose, dose_func = applied_crm,
+#'                       prior = prior, target = target)
+#'
+#' ## dtpflow(dtptable = dtps, cohort.labels = c('C1', 'C2', 'C3'))
+#'
+#' @keywords CRM dtps dtpcrm
+#'
 #' @export
 dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 

@@ -4,9 +4,9 @@
 \alias{applied_titecrmts_sim}
 \title{Simulate TITE-CRM trials using specified design options}
 \usage{
-applied_titecrmts_sim(true_tox, prior, target, initdes,
-    max_sample_size, first_dose, num_sims, cohort_size = 1, obswin, minfu,
-    recrate, dose_func = applied_titecrm, ...)
+applied_titecrmts_sim(true_tox, prior, target, max_sample_size,
+    num_sims, cohort_size = 1, obswin, minfu, recrate, initdes,
+    dose_func = applied_titecrm, ...)
 }
 \arguments{
 \item{true_tox}{A vector of 'true' underlying rates of toxicity for each of
@@ -37,8 +37,6 @@ per the initial design.}
 applied_titecrm.}
 
 \item{...}{Any other arguements detailed in dtp::applied_titecrm.}
-
-\item{first_dose}{The first dose level to tested.}
 }
 \value{
 A list containg two further lists. The first of these lists contains
@@ -59,9 +57,10 @@ num_sims <- 1000
 obswin = 80
 
 applied_titecrmts_sim(true_tox = true_tox, prior = prior, target = target,
-                      initdes = c(c(rep(1, 3), rep(2, 3), rep(3, 15)),
-                      max_sample_size = 21, first_dose = first_dose, num_sims = num_sims, cohort_size = 3,
-                      obswin = obswin, minfu = 20, recrate = 3, dose_func = applied_titecrm)
+                      max_sample_size = 21, num_sims = num_sims,
+                      cohort_size = 3, obswin = obswin, minfu = 20,
+                      recrate = 3, initdes = c(rep(1, 3), rep(2, 3), rep(3, 15)),
+                      dose_func = applied_titecrm)
 
 }
 \references{
@@ -71,9 +70,6 @@ O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual
 
 Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 York: Chapman & Hall/CRC Press.
-}
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \keyword{CRM}
 \keyword{Simulation}

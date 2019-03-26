@@ -94,8 +94,5 @@ York: Chapman & Hall/CRC Press.
 Cheung, Y. K. and Chappell, R. (2000). Sequential designs for phase I
 clinical trials with late-onset toxicities. Biometrics 56:1177-1182.
 }
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \keyword{CRM}
 \keyword{TITE}

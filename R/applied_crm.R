@@ -62,8 +62,6 @@
 #' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 #' York: Chapman & Hall/CRC Press.
 #'
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#'
 #' @examples
 #' prior  <- c(0.1, 0.3, 0.5)
 #' target <- 0.2
@@ -166,8 +164,6 @@ applied_crm <- function(prior, target, tox, level,
 #' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 #' York: Chapman & Hall/CRC Press.
 #'
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#'
 #' @examples
 #' prior  <- c(0.1, 0.3, 0.5)
 #' target <- 0.2
@@ -214,6 +210,60 @@ summary_crm <- function(x) {
 # current colour limit for number of cohorts is 10 couldn't be bothered to add more....
 # dose_labels is required as people have a certain habit of not naming doses 1:n
 
+
+#' @title Plot of posterior estimates from the CRM
+#'
+#' @description Provides funtionality for plotting the posterior estimates of
+#'     probabilities of toxicity at each dose level for both the most recent
+#'     update and for past cohort updates if requested.
+#'
+#' @usage plot_crm(crm, dose_labels, cohort_sizes = NULL, file = NULL,
+#'                 height = 600, width = 750, dose_func = NULL, ...,
+#'                 ylim = c(0, 1), lwd = 1, cex.axis = 1, cex.lab = 1,
+#'                 cex = 1, cohort.last = F)
+#'
+#' @param crm An object of class 'mtd' produced by applied_crm to be plotted.
+#' @param dose_labels A vector of character strings detailing the labels to be
+#'     used for each dose level in the plot.
+#' @param cohort_sizes An optional vector of cohort sizes; if provided the
+#'     previous estimates for each cohort will be plotted in addition.
+#' @param file An optional string for the file name; if provided the plot will
+#'     be saved as a .PNG to the current working directory under the provided
+#'     file name.
+#' @param height A numeric value specifying the vertical pixel count of the
+#'     plot. Default is 600.
+#' @param width A numeric value specifiying the horizontal pixel count of the
+#'     plot. Default is 750.
+#' @param dose_func Must be provided if cohort_sizes is provided. The function
+#'     to be used to when implementing the CRM for previous cohorts.
+#' @param ... Arguments to be provided to dose_func detailing CRM specification.
+#'     See applied_crm.
+#' @param ylim Undocumented item.
+#' @param lwd Undocumented item.
+#' @param cex.axis Undocumented item.
+#' @param cex.lab Undocumented item.
+#' @param cex Undocumented item.
+#' @param cohort.last Undocumented item.
+#'
+#' @details Produces a plot of current dose-toxicity estimates including the
+#'     priors and outputs a .png of plot to current directory if 'file' is
+#'     provided. Potential for histroy of estimates by cohort if cohort.sizes is
+#'     provided; dose_func is required to do this.
+#'
+#' @examples
+#' prior  <- c(0.1, 0.3, 0.5)
+#' target <- 0.2
+#' tox    <- c(0, 0, 1, 0, 1, 1)
+#' level  <- c(1, 1, 1, 2, 2, 2)
+#'
+#' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#' ##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
+#' ##                    stop_func = NULL)
+#'
+#' ##  plot_crm(crm, dose_labels = c("1", "2", "3"))
+#'
+#' @keywords CRM plot dtpcrm
+#'
 #' @export
 plot_crm <- function(crm, dose_labels, cohort_sizes = NULL, file = NULL,
                      height = 600, width = 750, dose_func = NULL, ..., ylim = c(0, 1),

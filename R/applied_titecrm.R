@@ -63,8 +63,6 @@
 #' Cheung, Y. K. and Chappell, R. (2000). Sequential designs for phase I
 #' clinical trials with late-onset toxicities. Biometrics 56:1177-1182.
 #'
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#'
 #' @examples
 #' prior    <- c(0.1, 0.3, 0.5)
 #' target   <- 0.2

@@ -5,8 +5,7 @@
 \title{Execute the CRM}
 \usage{
 applied_crm(prior, target, tox, level, no_skip_esc = TRUE,
-  no_skip_deesc = TRUE, global_coherent_esc = TRUE, stop_func = NULL,
-  ...)
+  no_skip_deesc = TRUE, global_coherent_esc = TRUE, stop_func = NULL, ...)
 }
 \arguments{
 \item{prior}{A vector of prior estimates of toxicity probabilties for the
@@ -86,8 +85,5 @@ O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual
 
 Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 York: Chapman & Hall/CRC Press.
-}
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \keyword{CRM}

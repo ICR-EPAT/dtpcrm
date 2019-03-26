@@ -2,7 +2,60 @@
 # minfu - minimum follow-up required for each patient in cohort to conduct model update
 # recrate - # of pts recruited per obswin e.g. 5
 
-
+#' @title Simulate TITE-CRM trials using specified design options
+#'
+#' @description applied_titecrm_sim is used to simulate trials using the
+#'     time-to-event continual reassessment method with specified design options
+#'     to determine the operating characteristics.
+#'
+#' @usage applied_titecrm_sim(true_tox, prior, target, max_sample_size,
+#'     first_dose, num_sims, cohort_size = 1, obswin, minfu, recrate, dose_func
+#'     = applied_titecrm, ...)
+#'
+#' @param true_tox A vector of 'true' underlying rates of toxicity for each of
+#'     the dose levels.
+#' @param prior A vector of prior estimates of toxicity probabilties for the
+#'     dose levels.
+#' @param target The target DLT rate.
+#' @param max_sample_size The maximum number of patients to be recruited in any
+#'     simulation.
+#' @param first_dose The first dose level to tested.
+#' @param num_sims The total number of simulations to be run.
+#' @param cohort_size The size of the patient cohorts. Default is 1.
+#' @param obswin The observation period for total patient follow up.
+#' @param minfu The minimum amount of follow-up required for each patient.
+#' @param recrate The number of patients recruited per obswin.
+#' @param dose_func The function to be employed in executing the CRM. Default is
+#'     applied_titecrm.
+#' @param ... Any other arguements detailed in dtp::applied_titecrm.
+#'
+#' @return A list containg two further lists. The first of these lists contains
+#'     the operating charateristics of the design, the second contains the
+#'     underlying data for each of the simulation iterations.
+#'
+#' @references O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual
+#'     reassessment method: A practical design for phase I clinical trials in
+#'     cancer. Biometrics 46:33-48.
+#'
+#' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
+#' York: Chapman & Hall/CRC Press.
+#'
+#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#'
+#' @examples
+#' prior  <- c(0.1, 0.3, 0.5)
+#' target <- 0.2
+#' true_tox <- c(0.05, 0.2, 0.35)
+#' first_dose <- 1
+#' num_sims <- 1000
+#' obswin = 80
+#'
+#' applied_titecrm_sim(true_tox = true_tox, prior = prior, target = target,
+#'                               max_sample_size = 21, first_dose = first_dose, num_sims = num_sims, cohort_size = 3,
+#'                               obswin = obswin, minfu = 20, recrate = 3, dose_func = applied_titecrm)
+#'
+#' @keywords CRM Simulations TITE dtpcrm
+#'
 #' @export
 applied_titecrm_sim <- function(true_tox, prior, target,
                             max_sample_size, first_dose,

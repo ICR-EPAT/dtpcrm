@@ -2,24 +2,59 @@
 % Please edit documentation in R/dtps.R
 \name{calculate_dtps}
 \alias{calculate_dtps}
-\title{Calculate Dose-Transition Pathways (DTPs)}
+\title{Produce the Dose transition pathways}
 \usage{
-calculate_dtps(next_dose, cohort_sizes, prev_tox = c(), prev_dose = c(),
-  dose_func = applied_crm, ...)
+calculate_dtps(next_dose, cohort_sizes, prev_tox = c(), prev_dose =
+    c(), dose_func = applied_crm, ...)
 }
 \arguments{
-\item{next_dose}{the dose that will be given to the very next cohort}
+\item{next_dose}{An integer value representing the dose to be assigned to the
+first cohort of patients in the pathways.}
 
-\item{cohort_sizes}{vector of cohort sizes for future paths, e.g. c(2, 3) considers a cohort of 2 followed by a cohort of 3}
+\item{cohort_sizes}{A vector of cohort sizes representing the size of the
+cohorts to be treated with the recommended dose at each decision point.}
 
-\item{prev_tox}{vector of (bool) toxicity events already observed}
+\item{prev_tox}{A vector of previous patient outcomes; 1 indicates toxicity,
+0 otherwise.}
 
-\item{prev_dose, }{vector of dose-levels already given}
+\item{prev_dose}{A vector of previous patient doses; The length of prev_dose
+must be equal to that of prev_tox.}
 
-\item{dose_func}{function that will perform the dose-finding calculation. It should take tox and level as args. Other args are passed through ... ,}
+\item{dose_func}{A function such as applied_crm which produces an object of
+class 'mtd'. To be used for calculation of the next recommended dose for
+each pathway permutation.}
 
-\item{...}{other arg}
+\item{...}{Any other arguements to be passed to dose_func; for specific
+arguements related to applied_crm see.}
+}
+\value{
+Produces a dataframe containing all possible permutations of outcomes
+    for each cohort to considered based on cohort_sizes and the recommned
+    doses for such permutations.
 }
 \description{
-Calculate Dose-Transition Pathways (DTPs) for future cohorts in a CRM-like trial.
+calculate_dtps is used to produce the dose transition pathways
+    for the continual reassessment method with specified design
+    options. These pathways present the possible model recommendations based
+    on all permumations of trial outcomes.
 }
+\examples{
+prior  <- c(0.1, 0.2, 0.5)
+target <- 0.15
+prev_tox <- c(0, 0, 0)
+prev_dose <- c(2, 2, 2)
+cohort_sizes <- c(2, 3)
+
+next_dose = applied_crm(prior = prior, target = target,
+                        tox = prev_tox, level = prev_dose)$mtd
+
+dose_func <- applied_crm
+
+dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
+                      prev_dose = prev_dose, dose_func = applied_crm,
+                      prior = prior, target = target)
+
+}
+\keyword{CRM}
+\keyword{dtpcrm}
+\keyword{dtps}

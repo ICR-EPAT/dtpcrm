@@ -1,4 +1,51 @@
-
+#' @title Simulate CRM trials using specified design options
+#'
+#' @description applied_crm_sim is used to simulate trials using the continual
+#'     reassessment method with specified design options to determine the
+#'     operating characteristics.
+#'
+#' @usage applied_crm_sim(true_tox, prior, target, max_sample_size, first_dose,
+#'     num_sims, cohort_size = 1, dose_func = applied_crm, ...)
+#'
+#' @param true_tox A vector of 'true' underlying rates of toxicity for each of
+#'     the dose levels.
+#' @param prior A vector of prior estimates of toxicity probabilties for the
+#'     dose levels.
+#' @param target The target DLT rate.
+#' @param max_sample_size The maximum number of patients to be recruited in any
+#'     simulation.
+#' @param first_dose The first dose level to tested.
+#' @param num_sims The total number of simulations to be run.
+#' @param cohort_size The size of the patient cohorts. Default is 1.
+#' @param dose_func The function to be employed in executing the CRM. Default is
+#'     applied_crm.
+#' @param ... Any other arguements detailed in dtp::applied_crm.
+#'
+#' @return A list containg two further lists. The first of these lists contains
+#'     the operating charateristics of the design, the second contains the
+#'     underlying data for each of the simulation iterations.
+#'
+#' @references O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual
+#'     reassessment method: A practical design for phase I clinical trials in
+#'     cancer. Biometrics 46:33-48.
+#'
+#' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
+#' York: Chapman & Hall/CRC Press.
+#'
+#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#'
+#' @examples
+#' prior  <- c(0.1, 0.3, 0.5)
+#' target <- 0.2
+#' true_tox <- c(0.15, 0.25, 0.45)
+#' first_dose <- 1
+#' num_sims <- 1000
+#'
+#' applied_crm_sim(true_tox, prior, target, max_sample_size = 30, first_dose,
+#'                 num_sims, cohort_size = 1, dose_func = applied_crm)
+#'
+#' @keywords CRM Simulations dtpcrm
+#'
 #' @export
 applied_crm_sim <- function(true_tox, prior, target,
                             max_sample_size, first_dose,
@@ -60,4 +107,3 @@ applied_crm_sim <- function(true_tox, prior, target,
 
   return(list(summary = summary, iterations = iterations))
 }
-

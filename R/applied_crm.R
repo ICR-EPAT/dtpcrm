@@ -3,6 +3,77 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
+#' @title Execute the CRM
+#'
+#' @description applied_crm is used to execute the continual reassessment method
+#'     with specified design options to determine the dose for the next patient.
+#'
+#' @param prior A vector of prior estimates of toxicity probabilties for the
+#'     dose levels.
+#' @param target The target DLT rate.
+#' @param tox A vector of patient outcomes; 1 indicates toxicity, 0 otherwise.
+#' @param level A vector of dose levels assigned to patients. The length of
+#'     level must be equal to that of tox.
+#' @param no_skip_esc If FALSE, the method will not enforce no skipping of doses
+#'     in escalation. Default is TRUE.
+#' @param no_skip_deesc If FALSE, the method will not enforce no skipping of
+#'     doses in de-escalation. Default is TRUE.
+#' @param global_coherent_esc If FALSE, the method will not enforce global
+#'     coherent escalation, that is, escalation if the overall rate of toxicity
+#'     seen at the current dose level is above the target rate. Default is TRUE.
+#' @param stop_func An optional arguement to provide a function which will
+#'     utilised alongside the CRM to determine if the trial should be stopped.
+#' @param ... Any other arguements detailed in dfcrm::crm.
+#'
+#' @details For maximum likelihood estimation, the variance of the estimate of β
+#'     (post.var) is approximated by the posterior variance of β with a
+#'     dispersed normal prior.
+#'
+#' The empiric model is specified as F(d, β) = d^{exp(β)}. The logistic model is
+#' specified as logit (F(d,β)) = intcpt + exp(β) * d. For method="bayes", the
+#' prior on β is normal with mean 0. Exponentiation of β ensures an increasing
+#' dose-toxicity function.
+#'
+#' This function is largely a wrapper for the dfcrm function crm, it provides
+#' functionality for additional design choices for the CRM including global
+#' coherency and stopping for excess toxicity.
+#'
+#' @return An object of class "mtd" is returned as per package "dfcrm",
+#'     additional information is provided if a stopping function is used.
+#'     \item{prior}{Initial guesses of toxicity rates.}  \item{target}{The
+#'     target probability of toxicity at the MTD.}  \item{ptox}{Updated
+#'     estimates of toxicity rates.}  \item{ptoxL}{Lower confidence/probability
+#'     limits of toxicity rates.}  \item{ptoxU}{Upper confidence/probability
+#'     limits of toxicity rates.}  \item{mtd}{The updated estimate of the MTD.}
+#'     \item{prior.var}{The variance of the normal prior.}  \item{post.var}{The
+#'     posterior variance of the model parameter.}  \item{estimate}{Estimate of
+#'     the model parameter.}  \item{method}{The method of estimation.}
+#'     \item{model}{The working model.}  \item{dosescaled}{The scaled doses
+#'     obtained via backward substitution.}  \item{tox}{Patients' toxicity
+#'     indications.}  \item{level}{Dose levels assigned to patients.}
+#'     \item{stop}{A logical variable detailing if the trial should be stopped;
+#'     TRUE to stop, FALSE otherwise} \item{stop_reason}{A detailed reason for
+#'     why the trial should be stopped. Only provided if stop is TRUE}
+#'
+#' @references O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual
+#'     reassessment method: A practical design for phase I clinical trials in
+#'     cancer. Biometrics 46:33-48.
+#'
+#' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
+#' York: Chapman & Hall/CRC Press.
+#'
+#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#'
+#' @examples
+#' prior  <- c(0.1, 0.3, 0.5)
+#' target <- 0.2
+#' tox    <- c(0, 0, 1, 0, 1, 1)
+#' level  <- c(1, 1, 1, 2, 2, 2)
+#' applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'             global_coherent_esc = TRUE, stop_func = NULL)
+#'
+#' @keywords CRM
+#'
 #' @export
 applied_crm <- function(prior, target, tox, level,
                         # The above signature should be mimicked by specialisations
@@ -70,6 +141,47 @@ applied_crm <- function(prior, target, tox, level,
 
 # provides summary dataframe of applied_crm dose level information - useful for reports ----
 
+#' @title Provide a summary of applied_crm output
+#'
+#' @description summary_crm is used to return a dataframe of the summary of the
+#'     output from applied_crm.
+#'
+#' @usage summary_crm(x)
+#'
+#' @param x An object assigned to be the output from applied_crm.
+#'
+#' @details This functions take an object of class "mtd" and produces a
+#'     dataframe containing a summary of information within the
+#'     object. Specifcally it shows the dose levels, prior probabilities, number
+#'     of evaluable patients, number of DLTs and the posterior probability
+#'     estimates along with confidence/probability intervals if estimated in the
+#'     underlying object.
+#'
+#' @return Dataframe of the summary of the output from applied_crm.
+#'
+#' @references O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual
+#'     reassessment method: A practical design for phase I clinical trials in
+#'     cancer. Biometrics 46:33-48.
+#'
+#' Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
+#' York: Chapman & Hall/CRC Press.
+#'
+#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#'
+#' @examples
+#' prior  <- c(0.1, 0.3, 0.5)
+#' target <- 0.2
+#' tox    <- c(0, 0, 1, 0, 1, 1)
+#' level  <- c(1, 1, 1, 2, 2, 2)
+#'
+#' crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'                        coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
+#'                        stop_func = NULL, ...)
+#'
+#' summary_crm(crm_obj)
+#'
+#' @keywords CRM dtpcrm
+#'
 #' @export
 summary_crm <- function(x) {
   summary <- data.frame('Dose.level' = c(1:length(x$prior)), 'Prior.Prob(DLT)' = x$prior,
@@ -185,5 +297,3 @@ plot_crm <- function(crm, dose_labels, cohort_sizes = NULL, file = NULL,
     }
   }
 }
-
-

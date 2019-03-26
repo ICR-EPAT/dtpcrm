@@ -52,17 +52,52 @@
   return(dose_recs)
 }
 
-#' @title Calculate Dose-Transition Pathways (DTPs)
+#' @title Produce the Dose transition pathways
 #'
-#' @description Calculate Dose-Transition Pathways (DTPs) for future cohorts in a CRM-like trial.
+#' @description calculate_dtps is used to produce the dose transition pathways
+#'     for the continual reassessment method with specified design
+#'     options. These pathways present the possible model recommendations based
+#'     on all permumations of trial outcomes.
 #'
-#' @param next_dose the dose that will be given to the very next cohort
-#' @param cohort_sizes vector of cohort sizes for future paths, e.g. c(2, 3) considers a cohort of 2 followed by a cohort of 3
-#' @param prev_tox vector of (bool) toxicity events already observed
-#' @param prev_dose, vector of dose-levels already given
-#' @param dose_func function that will perform the dose-finding calculation. It should take tox and level as args. Other args are passed through ... ,
-#            It should return the next dose (int) or object like dfcrm:: mtd. Default function is applied_crm
-#' @param ... other arg
+#' @usage calculate_dtps(next_dose, cohort_sizes, prev_tox = c(), prev_dose =
+#'     c(), dose_func = applied_crm, ...)
+#'
+#' @param next_dose An integer value representing the dose to be assigned to the
+#'     first cohort of patients in the pathways.
+#' @param cohort_sizes A vector of cohort sizes representing the size of the
+#'     cohorts to be treated with the recommended dose at each decision point.
+#' @param prev_tox A vector of previous patient outcomes; 1 indicates toxicity,
+#'     0 otherwise.
+#' @param prev_dose A vector of previous patient doses; The length of prev_dose
+#'     must be equal to that of prev_tox.
+#' @param dose_func A function such as applied_crm which produces an object of
+#'     class 'mtd'. To be used for calculation of the next recommended dose for
+#'     each pathway permutation.
+#' @param ... Any other arguements to be passed to dose_func; for specific
+#'     arguements related to applied_crm see.
+#'
+#' @return Produces a dataframe containing all possible permutations of outcomes
+#'     for each cohort to considered based on cohort_sizes and the recommned
+#'     doses for such permutations.
+#'
+#' @examples
+#' prior  <- c(0.1, 0.2, 0.5)
+#' target <- 0.15
+#' prev_tox <- c(0, 0, 0)
+#' prev_dose <- c(2, 2, 2)
+#' cohort_sizes <- c(2, 3)
+#'
+#' next_dose = applied_crm(prior = prior, target = target,
+#'                         tox = prev_tox, level = prev_dose)$mtd
+#'
+#' dose_func <- applied_crm
+#'
+#' dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
+#'                       prev_dose = prev_dose, dose_func = applied_crm,
+#'                       prior = prior, target = target)
+#'
+#' @keywords CRM dtps dtpcrm
+#'
 #' @export
 calculate_dtps = function(next_dose, cohort_sizes, prev_tox = c(),
                           prev_dose = c(), dose_func = applied_crm, ...) {

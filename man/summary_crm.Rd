@@ -30,11 +30,11 @@ target <- 0.2
 tox    <- c(0, 0, 1, 0, 1, 1)
 level  <- c(1, 1, 1, 2, 2, 2)
 
-crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-                       coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-                       stop_func = NULL, ...)
+## crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+##                        coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
+##                        stop_func = NULL, ...)
 
-summary_crm(crm_obj)
+## summary_crm(crm_obj)
 
 }
 \references{

@@ -281,7 +281,7 @@ plot_crm <- function(crm, dose_labels, cohort_sizes = NULL, file = NULL,
     postprob  <- crm$ptox
     priorprob <- crm$prior
 
-    graphics::plot(x = doses, y = postprob, col = 2, type = 'b', xlab = 'Dose Level', xaxt = 'n',
+    graphics::plot(x = doses, y = postprob, col = 2, type = 'b', xlab = 'Dose', xaxt = 'n',
          ylab = 'Probability of Dose Limiting Toxicity', ylim = ylim, lwd = lwd)
     graphics::points(x= doses, y =priorprob, type = 'b', col = 1, lwd = lwd)
     graphics::abline(h = crm$target, lty = 2)
@@ -309,7 +309,7 @@ plot_crm <- function(crm, dose_labels, cohort_sizes = NULL, file = NULL,
     doses     <- c(1:length(crm$prior))
     priorprob <- crm$prior
 
-    graphics::plot(x = doses, y = priorprob, col = 1, type = 'b', xlab = 'Dose Level', xaxt = 'n',
+    graphics::plot(x = doses, y = priorprob, col = 1, type = 'b', xlab = 'Dose', xaxt = 'n',
          ylab = 'Probability of Dose Limiting Toxicity', ylim = ylim, lwd = lwd)
     graphics::abline(h = crm$target, lty = 2)
     graphics::axis(1, at = doses, labels = dose_labels)

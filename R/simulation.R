@@ -91,7 +91,7 @@ applied_crm_sim <- function(true_tox, prior, target,
     max_sample_size = max_sample_size, first_dose = first_dose,
     num_sims = num_sims, cohort_size = cohort_size,
     # Summarise trial outcomes
-    prob_stop = mean(sapply(iterations, function(x) x$stop)),
+    prob_stop = table(substr(unlist(sapply(iterations, function(x) x$stop_reason)), 1, 15)) / num_sims,
     mtd = sapply(1:length(prior), function(d)
       sum(dose_selections == d, na.rm = TRUE) / num_sims),
     # Summarise doses givne to patients

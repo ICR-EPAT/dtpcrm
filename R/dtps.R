@@ -101,7 +101,7 @@
 #' @export
 calculate_dtps = function(next_dose, cohort_sizes, prev_tox = c(),
                           prev_dose = c(), dose_func = applied_crm, ...) {
-  # Calculate Dose-Transition Pathways (DTPs) for future cohorts in a CRM-like
+  # Calculate Dose-Transition Pathways (DTP) for future cohorts in a CRM-like
   #   trial. The first cohort will be receive next_dose, conditional
   #   on having already observed prev_tox outcomes at prev_dose doses (optional)
   # Dose decisions are made using dose_func, taking args tox and level, & ...

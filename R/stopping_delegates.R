@@ -14,7 +14,7 @@
 # }
 #
 # stop_for_excess_toxicity_empiric <- function(x, tox_lim, prob_cert, dose = 1,
-#                                              nsamps=10^5) {
+#                                              nsamps=10^6) {
 #
 #   # If x was estimated with est.var=F this will fail cos x$post.var will be NULL
 #   post_beta_mean = x$estimate
@@ -134,7 +134,7 @@ stop_for_sample_size <- function(x, max_sample_size) {
 #'     dose is greater than some further specified certainty value.
 #'
 #' @usage stop_for_excess_toxicity_empiric(x, tox_lim, prob_cert, dose = 1,
-#'     nsamps = 10^5, suppress_dose = TRUE)
+#'     ns = 10^6, suppress_dose = TRUE)
 #'
 #' @param x An object of class 'mtd'.
 #' @param tox_lim A numeric; specifying the value for which the estimated
@@ -202,7 +202,7 @@ stop_for_excess_toxicity_empiric <- function(x, tox_lim, prob_cert, dose = 1,
 #'     dose is greater than some further specified certainty value.
 #'
 #' @usage stop_for_excess_toxicity_logistic(x, tox_lim, prob_cert, dose = 1,
-#'     nsamps = 10^5, suppress_dose = TRUE)
+#'     nsamps = 10^6, suppress_dose = TRUE)
 #'
 #' @param x An object of class 'mtd'.
 #' @param tox_lim A numeric; specifying the value for which the estimated
@@ -240,7 +240,7 @@ stop_for_excess_toxicity_empiric <- function(x, tox_lim, prob_cert, dose = 1,
 #'
 #' @export
 stop_for_excess_toxicity_logistic <- function(x, tox_lim, prob_cert, dose = 1,
-                                              nsamps = 10^5,
+                                              nsamps = 10^6,
                                               suppress_dose = TRUE) {
   # If x was estimated with est.var=F this will fail cos x$post.var will be NULL
   post_beta_mean = x$estimate

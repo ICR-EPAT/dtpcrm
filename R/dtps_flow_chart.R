@@ -144,6 +144,7 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 
   box.colour[which(final.dose == -3 | is.na(final.dose))] <- "red"
 
+  ## TODO: NEED TO UPDATE THIS  d(-3) is specific to VIOLA only
   names[which(names == "d(-3)")] <- "STOP"
   names[which(names == "d(NA)")] <- "STOP"
 

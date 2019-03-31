@@ -73,7 +73,7 @@
 #' @param dose_func A function such as applied_crm which produces an object of
 #'     class 'mtd'. To be used for calculation of the next recommended dose for
 #'     each pathway permutation.
-#' @param ... Any other arguements to be passed to dose_func; for specific
+#' @param ... Any other arguments to be passed to dose_func; for specific
 #'     arguements related to applied_crm see.
 #'
 #' @return Produces a dataframe containing all possible permutations of outcomes

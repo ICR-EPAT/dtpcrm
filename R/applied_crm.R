@@ -207,8 +207,8 @@ summary_crm <- function(x) {
 # and outputs png of plot to current directory if 'file' is given. Potential for
 # histroy of curves by cohort if cohort.sizes is provided - dose_func is required to do this.
 # height and width are for pixels of output plot.
-# current colour limit for number of cohorts is 10 couldn't be bothered to add more....
-# dose_labels is required as people have a certain habit of not naming doses 1:n
+# current colour limit for number of cohorts is 14
+# dose_labels allow users to specify dose labels to be used instead of standard dose levels 1:n
 
 
 #' @title Plot of posterior estimates from the CRM
@@ -247,7 +247,7 @@ summary_crm <- function(x) {
 #'
 #' @details Produces a plot of current dose-toxicity estimates including the
 #'     priors and outputs a .png of plot to current directory if 'file' is
-#'     provided. Potential for histroy of estimates by cohort if cohort.sizes is
+#'     provided. Potential for history of estimates by cohort if cohort.sizes is
 #'     provided; dose_func is required to do this.
 #'
 #' @examples
@@ -304,8 +304,10 @@ plot_crm <- function(crm, dose_labels, cohort_sizes = NULL, file = NULL,
       graphics::par(cex.axis = cex.axis, cex.lab = cex.lab)
     }
 
-    colours <- c(1, 2, 'chartreuse4', 'darkgoldenrod2', 'hotpink1', 'royalblue2', 'chocolate1',
-                 'mediumorchid4', 'brown', 'aquamarine1')
+    colours <- c(1, 2, 'chartreuse4', 'darkgoldenrod2', 'hotpink1', 
+                 'royalblue2', 'chocolate1', 'mediumorchid4', 'brown', 'aquamarine1', 
+                 'darkmagenta', 'darkolivegreen', 'deepskyblue4', 'dimgray', 'darksalmon', 
+                 'darkseagreen', 'darkslateblue', 'darkslategray1','cyan4', 'coral2')
     doses     <- c(1:length(crm$prior))
     priorprob <- crm$prior
 

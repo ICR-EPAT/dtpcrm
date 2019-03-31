@@ -24,7 +24,7 @@ must be equal to that of prev_tox.}
 class 'mtd'. To be used for calculation of the next recommended dose for
 each pathway permutation.}
 
-\item{...}{Any other arguements to be passed to dose_func; for specific
+\item{...}{Any other arguments to be passed to dose_func; for specific
 arguements related to applied_crm see.}
 }
 \value{

@@ -25,13 +25,13 @@
 #'     utilised alongside the CRM to determine if the trial should be stopped.
 #' @param ... Any other arguements detailed in dfcrm::crm.
 #'
-#' @details For maximum likelihood estimation, the variance of the estimate of β
-#'     (post.var) is approximated by the posterior variance of β with a
+#' @details For maximum likelihood estimation, the variance of the estimate of beta
+#'     (post.var) is approximated by the posterior variance of beta with a
 #'     dispersed normal prior.
 #'
-#' The empiric model is specified as F(d, β) = d^{exp(β)}. The logistic model is
-#' specified as logit (F(d,β)) = intcpt + exp(β) * d. For method="bayes", the
-#' prior on β is normal with mean 0. Exponentiation of β ensures an increasing
+#' The empiric model is specified as F(d, beta) = d^{exp(beta)}. The logistic model is
+#' specified as logit (F(d,beta)) = intcpt + exp(beta) * d. For method="bayes", the
+#' prior on beta is normal with mean 0. Exponentiation of beta ensures an increasing
 #' dose-toxicity function.
 #'
 #' This function is largely a wrapper for the dfcrm function crm, it provides
@@ -304,9 +304,9 @@ plot_crm <- function(crm, dose_labels, cohort_sizes = NULL, file = NULL,
       graphics::par(cex.axis = cex.axis, cex.lab = cex.lab)
     }
 
-    colours <- c(1, 2, 'chartreuse4', 'darkgoldenrod2', 'hotpink1', 
-                 'royalblue2', 'chocolate1', 'mediumorchid4', 'brown', 'aquamarine1', 
-                 'darkmagenta', 'darkolivegreen', 'deepskyblue4', 'dimgray', 'darksalmon', 
+    colours <- c(1, 2, 'chartreuse4', 'darkgoldenrod2', 'hotpink1',
+                 'royalblue2', 'chocolate1', 'mediumorchid4', 'brown', 'aquamarine1',
+                 'darkmagenta', 'darkolivegreen', 'deepskyblue4', 'dimgray', 'darksalmon',
                  'darkseagreen', 'darkslateblue', 'darkslategray1','cyan4', 'coral2')
     doses     <- c(1:length(crm$prior))
     priorprob <- crm$prior

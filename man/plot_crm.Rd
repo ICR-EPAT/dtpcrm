@@ -54,7 +54,7 @@ Provides funtionality for plotting the posterior estimates of
 \details{
 Produces a plot of current dose-toxicity estimates including the
     priors and outputs a .png of plot to current directory if 'file' is
-    provided. Potential for histroy of estimates by cohort if cohort.sizes is
+    provided. Potential for history of estimates by cohort if cohort.sizes is
     provided; dose_func is required to do this.
 }
 \examples{

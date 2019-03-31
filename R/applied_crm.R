@@ -207,7 +207,7 @@ summary_crm <- function(x) {
 # and outputs png of plot to current directory if 'file' is given. Potential for
 # histroy of curves by cohort if cohort.sizes is provided - dose_func is required to do this.
 # height and width are for pixels of output plot.
-# current colour limit for number of cohorts is 14
+# current colour limit for number of cohorts is 20
 # dose_labels allow users to specify dose labels to be used instead of standard dose levels 1:n
 
 

@@ -5,7 +5,7 @@
 \title{Stopping for excess toxicity - Empiric method}
 \usage{
 stop_for_excess_toxicity_empiric(x, tox_lim, prob_cert, dose = 1,
-    nsamps = 10^5, suppress_dose = TRUE)
+    nsamps = 10^6, suppress_dose = TRUE)
 }
 \arguments{
 \item{x}{An object of class 'mtd'.}

@@ -62,7 +62,9 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 
   ### m: vector of cohort size for each cohort, e.g. m<-c(3,3,3) for cohort sizes of 3  ####
 
-    m <- c(max(dtptable[ , 2]), max(dtptable[ , 4]), max(dtptable[ , 6]))
+    m <- c(max(dtptable[ , 2], na.rm = T), 
+           max(dtptable[ , 4], na.rm = T), 
+           max(dtptable[ , 6], na.rm = T))
 
   ### Obtain unique doses for Cohort 2 and 3    #####
 
@@ -74,6 +76,8 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 
   for(i in 1:m[1]){
     C2.dose <- c(C2.dose, unique(dtptable[ , 3][dtptable[ , 2] == i]))
+    if(length(C2.dose) > (m[1] + 1))
+      {stop('There are inconsistent recommendations for the same pathways, unable to produce flow chart')}
   }
 
 
@@ -88,6 +92,8 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
     C3.dose <- unique(dtptable[ind, 5][dtptable[ind, 4] == 0])
     for (i in 1:m[2]){
       C3.dose <- c(C3.dose, unique(dtptable[ind, 5][dtptable[ind, 4] == i]))
+      if(length(C3.dose) > (m[2] + 1))
+      {stop('There are inconsistent recommendations for the same pathways, unable to produce flow chart')}
     }
     C3.alldose[j:((m[2] + 1) * y)] <- C3.dose
     j <- j + (m[2] + 1)
@@ -141,11 +147,7 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
   }
 
   box.colour <- rep("white", length(final.dose))
-
-  box.colour[which(final.dose == -3 | is.na(final.dose))] <- "red"
-
-  ## TODO: NEED TO UPDATE THIS  d(-3) is specific to VIOLA only
-  names[which(names == "d(-3)")] <- "STOP"
+  box.colour[is.na(final.dose)] <- "red"
   names[which(names == "d(NA)")] <- "STOP"
 
   ## PLOT DTP FLOW DIAGRAM --------------

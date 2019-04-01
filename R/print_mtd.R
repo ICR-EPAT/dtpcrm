@@ -55,8 +55,10 @@ print.mtd <- function (x, dgt = 3, model.detail = x$model.detail, patient.detail
           totwts, "\t\t", sum(x$tox[expt]), "\t\t", ptox[k],
           "\t", ptoxL[k], "\t", ptoxU[k], "\n")
     }
-    if(x$stop){
-      cat("It is recommended to stop the trial\n")
+    if("stop" %in% x){         
+              if(x$stop){
+                        cat("It is recommended to stop the trial\n")
+              } else{cat("Next recommended dose level:", x$mtd, "\n")}
     } else{cat("Next recommended dose level:", x$mtd, "\n")}
   }
   else {
@@ -77,8 +79,10 @@ print.mtd <- function (x, dgt = 3, model.detail = x$model.detail, patient.detail
           "\t\t", ptox[k], "\t", ptoxL[k], "\t", ptoxU[k],
           "\n")
     }
-    if(x$stop){
-      cat("It is recommended to stop the trial\n")
+    if("stop" %in% x){         
+              if(x$stop){
+                        cat("It is recommended to stop the trial\n")
+              } else{cat("Next recommended dose level:", x$mtd, "\n")}
     } else{cat("Next recommended dose level:", x$mtd, "\n")}
   }
 

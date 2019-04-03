@@ -35,8 +35,9 @@
 #' dose-toxicity function.
 #'
 #' This function is largely a wrapper for the dfcrm function crm, it provides
-#' functionality for additional design choices for the CRM including global
-#' coherency and stopping for excess toxicity.
+#' functionality for additional design choices for the CRM including global coherency
+#' and stopping for excess toxicity and stopping when sufficient number of patients are dosed at MTD
+#' 
 #'
 #' @return An object of class "mtd" is returned as per package "dfcrm",
 #'     additional information is provided if a stopping function is used.

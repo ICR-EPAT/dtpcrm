@@ -12,11 +12,11 @@
 #' @param prior A vector of prior estimates of toxicity probabilties for the
 #'     dose levels.
 #' @param target The target DLT rate.
-#' @param max_sample_size The maximum number of patients to be recruited in any
+#' @param max_sample_size The maximum number of subjects to be recruited in any
 #'     simulation.
 #' @param first_dose The first dose level to tested.
 #' @param num_sims The total number of simulations to be run.
-#' @param cohort_size The size of the patient cohorts. Default is 1.
+#' @param cohort_size The size of the cohorts. Default is 1.
 #' @param dose_func The function to be employed in executing the CRM. Default is
 #'     applied_crm.
 #' @param ... Any other arguements detailed in dtpcrm::applied_crm.

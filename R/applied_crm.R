@@ -6,13 +6,13 @@
 #' @title Execute the CRM
 #'
 #' @description applied_crm is used to execute the continual reassessment method
-#'     with specified design options to determine the dose for the next patient.
+#'     with specified design options to determine the dose for the next subject.
 #'
 #' @param prior A vector of prior estimates of toxicity probabilties for the
 #'     dose levels.
 #' @param target The target DLT rate.
-#' @param tox A vector of patient outcomes; 1 indicates toxicity, 0 otherwise.
-#' @param level A vector of dose levels assigned to patients. The length of
+#' @param tox A vector of subject outcomes; 1 indicates toxicity, 0 otherwise.
+#' @param level A vector of dose levels assigned to subjects. The length of
 #'     level must be equal to that of tox.
 #' @param no_skip_esc If FALSE, the method will not enforce no skipping of doses
 #'     in escalation. Default is TRUE.
@@ -36,7 +36,7 @@
 #'
 #' This function is largely a wrapper for the dfcrm function crm, it provides
 #' functionality for additional design choices for the CRM including global coherency
-#' and stopping for excess toxicity and stopping when sufficient number of patients are dosed at MTD
+#' and stopping for excess toxicity and stopping when sufficient number of subjects are dosed at MTD
 #' 
 #'
 #' @return An object of class "mtd" is returned as per package "dfcrm",

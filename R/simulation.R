@@ -19,9 +19,9 @@
 #' @param cohort_size The size of the patient cohorts. Default is 1.
 #' @param dose_func The function to be employed in executing the CRM. Default is
 #'     applied_crm.
-#' @param ... Any other arguements detailed in dtp::applied_crm.
+#' @param ... Any other arguements detailed in dtpcrm::applied_crm.
 #'
-#' @return A list containg two further lists. The first of these lists contains
+#' @return A list containing two further lists. The first of these lists contains
 #'     the operating charateristics of the design, the second contains the
 #'     underlying data for each of the simulation iterations.
 #'
@@ -94,7 +94,7 @@ applied_crm_sim <- function(true_tox, prior, target,
     prob_stop = table(substr(unlist(sapply(iterations, function(x) x$stop_reason)), 1, 15)) / num_sims,
     mtd = sapply(1:length(prior), function(d)
       sum(dose_selections == d, na.rm = TRUE) / num_sims),
-    # Summarise doses givne to patients
+    # Summarise doses given to patients
     doses_given = sapply(1:length(prior), function(d)
       sum(doses_given == d, na.rm = TRUE) / num_sims),
     prob_dose_given = sapply(1:length(prior), function(d)

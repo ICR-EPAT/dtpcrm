@@ -2,7 +2,7 @@
 #'
 #' @description applied_titecrm is used to execute the time-to-event continual
 #'     reassessment method with specified design options to determine the dose
-#'     for the next patient.
+#'     for the next subject.
 #'
 #' @usage applied_titecrm(prior, target, tox, level, followup, obswin,
 #'     no_skip_esc = TRUE, no_skip_deesc = TRUE, global_coherent_esc = TRUE,
@@ -11,12 +11,12 @@
 #' @param prior A vector of prior estimates of toxicity probabilties for the
 #'     dose levels.
 #' @param target The target DLT rate.
-#' @param tox A vector of patient outcomes; 1 indicates toxicity, 0 otherwise.
+#' @param tox A vector of subject outcomes; 1 indicates toxicity, 0 otherwise.
 #' @param level A vector of dose levels assigned to subjects. The length of
 #'     level must be equal to that of tox.
-#' @param followup A vector of patient follow up times. The length must be equal
+#' @param followup A vector of subject follow up times. The length must be equal
 #'     to that of tox.
-#' @param obswin The observation period for total patient follow up.
+#' @param obswin The observation period for total subject follow up.
 #' @param no_skip_esc If FALSE, the method will not enforce no skipping of doses
 #'     in escalation. Default is TRUE.
 #' @param no_skip_deesc If FALSE, the method will not enforce no skipping of
@@ -78,11 +78,8 @@
 #'
 #' @export
 applied_titecrm <- function(prior, target, tox, level, followup, obswin,
-                        # The above signature should be mimicked by specialisations
                         no_skip_esc = TRUE, no_skip_deesc = TRUE,
-                        # coherent_esc = FALSE, coherent_deesc = FALSE,
                         global_coherent_esc = TRUE,
-                        # TODO: I don't imagine anyone wants global_coherent_deesc
                         stop_func = NULL, ...) {
 
   # Start with the dfcrm decision
@@ -100,18 +97,6 @@ applied_titecrm <- function(prior, target, tox, level, followup, obswin,
     x$mtd <- min(level) - 1
   }
 
-  # # Coherence, or local coherence, in escalation means not escalating
-  # # immediately after a toxicity event
-  # if (coherent_esc & tail(tox, 1) == 1) {
-  #   x$mtd <- min(x$mtd, tail(level, 1))
-  # }
-
-  # # Coherence, or local coherence, in de-escalation means not de-escalating
-  # # immediately after a non-toxicity event
-  # if (coherent_deesc & tail(tox, 1) == 0) {
-  #   x$mtd <- max(x$mtd, tail(level, 1))
-  # }
-
   # Global coherence in escalation means not escalating from a dose with an
   # observed toxicity rate exceeding the target
   if (global_coherent_esc) {
@@ -123,18 +108,6 @@ applied_titecrm <- function(prior, target, tox, level, followup, obswin,
   }
 
   # Invoke decision to determine whether trial should stop if stop_func is given
-  # if(!is.null(stop_func)) {
-  #   stop_decision = stop_func(x)
-  #   if(is.list(stop_decision)) {
-  #     x$stop <- stop_decision[[1]]
-  #     x$stop_reason <- stop_decision[[2]]
-  #   } else {
-  #     x$stop <- stop_decision
-  #   }
-  # } else {
-  #   x$stop <- FALSE
-  #   x$stop_reason <- NULL
-  # }
   if(!is.null(stop_func)) {
     x = stop_func(x)  # Let stopping delegate decorate x
   }

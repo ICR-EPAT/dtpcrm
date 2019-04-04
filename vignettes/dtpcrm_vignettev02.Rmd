@@ -1,12 +1,12 @@
 ---
-title: "dtpcrm: Designing and Conducting a Continual Reassessment Method trial using Dose Transition Pathways"
+title: "dtpcrm: Dose Transition Pathways for Continual Reassessment Method"
 author: "Christina Yap, Daniel Slade"
 date: "`r Sys.Date()`"
 output: 
     rmarkdown::html_vignette:
     fig_caption: yes
 vignette: >
-  %\VignetteIndexEntry{dtpcrm: Designing and Conducting a Continual Reassessment Method trial using Dose Transition Pathways}
+  %\VignetteIndexEntry{dtpcrm: Dose Transition Pathways for Continual Reassessment Method}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

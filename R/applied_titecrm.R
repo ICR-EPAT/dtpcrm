@@ -24,9 +24,9 @@
 #' @param global_coherent_esc If FALSE, the method will not enforce global
 #'     coherent escalation, that is, escalation if the overall rate of toxicity
 #'     seen at the current dose level is above the target rate. Default is TRUE.
-#' @param stop_func An optional arguement to provide a function which will
-#'     utilised alongside the CRM to determine if the trial should be stopped.
-#' @param ... Any other arguements detailed in dfcrm::titecrm.
+#' @param stop_func An optional argument to provide a function which will
+#'     utilised alongside the TITE-CRM to determine if the trial should be stopped.
+#' @param ... Any other arguments detailed in dfcrm::titecrm.
 #'
 #' @details The adaptive weighting scheme is given in Cheung and Chappell (2000)
 #'     given in the reference list.

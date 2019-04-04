@@ -41,11 +41,11 @@
 #'
 #' dose_func <- applied_crm
 #'
-#' dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
+#' DTP = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
 #'                       prev_dose = prev_dose, dose_func = applied_crm,
 #'                       prior = prior, target = target)
 #'
-#' dtpflow(dtptable = dtps, cohort.labels = c('C1', 'C2', 'C3'))
+#' dtpflow(dtptable = DTP, cohort.labels = c('C1', 'C2', 'C3'))
 #'
 #' @keywords CRM dtps dtpcrm
 #'
@@ -53,7 +53,7 @@
 dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 
   ### Check dtptable for correct number of cohorts
-  if(ncol(dtptable) != 7) {stop('dtptable is required to have length(cohort_sizes) = 3')}
+  if(ncol(dtptable) != 7) {stop('dtptable is required to project doses for 3 cohorts, where length(cohort_sizes) = 3')}
 
   ### m: vector of cohort size for each cohort, e.g. m<-c(3,3,3) for cohort sizes of 3  ####
 

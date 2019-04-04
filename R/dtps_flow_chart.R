@@ -47,7 +47,7 @@
 #'
 #' dtpflow(dtptable = DTP, cohort.labels = c('C1', 'C2', 'C3'))
 #'
-#' @keywords CRM dtps dtpcrm
+#' @keywords CRM DTP dtpcrm
 #'
 #' @export
 dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){

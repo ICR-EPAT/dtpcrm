@@ -24,7 +24,7 @@
 #' @title Produce DTP flow diagram
 #'
 #' @description dtpflow will produce a flow diagram of the possible paths for
-#'     the next three cohorts of patients.
+#'     the next three cohorts of subjects.
 #'
 #' @usage dtpflow(dtptable, cohort.labels = c('C1', 'C2', 'C3'))
 #'

@@ -1,6 +1,6 @@
 ---
 title: "dtpcrm: Designing and Conducting a Continual Reassessment Method trial using Dose Transition Pathways"
-author: "Christina Yap, Daniel Slade, KB?, Yi Pan"
+author: "Christina Yap, Daniel Slade"
 date: "`r Sys.Date()`"
 output: 
     rmarkdown::html_vignette:
@@ -21,10 +21,10 @@ knitr::opts_chunk$set(
 
 # Description
 
-The dtpcrm package presents the design and conduct of a Continual Reassessment Method (CRM) trial with the use of the Dose Transition Pathways (DTP). Building on the R dfcrm package [1], the dtpcrm package provides the DTP to project in advance the doses recommended by a model-based dose-finding design for subsequent patients (stay, escalate, de-escalate or stop early) using all the accumulated toxicity information [2]. DTP can be used as a design calibration tool and an operational/trial conduct tool. It can be presented as a table or as a flow diagram. The dtpcrm package also provides the modified CRM [3] and Time to event CRM (TITE-CRM) [4] with added practical modifications to allow stopping early when:  
+The dtpcrm package presents the design and conduct of a Continual Reassessment Method (CRM) trial with the use of the Dose Transition Pathways (DTP). Building on the R dfcrm package [1], the dtpcrm package provides the DTP to project in advance the doses recommended by a model-based dose-finding design for subsequent subjects (stay, escalate, de-escalate or stop early) using all the accumulated toxicity information [2]. DTP can be used as a design calibration tool and an operational/trial conduct tool. It can be presented as a table or as a flow diagram. The dtpcrm package also provides the modified CRM [3] and Time to event CRM (TITE-CRM) [4] with added practical modifications to allow stopping early when:  
 
 -    there is sufficient evidence that the lowest dose is too toxic and/or
--    there is a sufficient number of patients dosed at the maximum tolerated dose (MTD)
+-    there is a sufficient number of subjects dosed at the maximum tolerated dose (MTD)
 
 Here, we will illustrate the use of the DTP as  
 
@@ -104,14 +104,14 @@ x = 0.1
 tox_lim = target.DLT + x
 ```
 
-- Stop the trial early if there are 12 patients at the recommended MTD. 
+- Stop the trial early if there are 12 subjects at the recommended MTD. 
 
 ```{r}
 n.mtd= 12     
 ```
 
 
-Stopping early criterion (for safety and sufficient number of patients at MTD)
+Stopping early criterion (for safety and sufficient number of subjects at MTD)
 
 ```{r}
 stop_func <- function(x) {
@@ -125,7 +125,7 @@ stop_func <- function(x) {
 
 ## Simulations: assess operating characteristics of the proposed CRM design
 
-Simulated operating characteristics (OCs) are an important tool for informed decision making. 
+Simulated operating characteristics (OCs) are an important tool to assess the performance of a proposed adaptive design for informed decision making. 
 
 Let's examine three scenarios, S1, S2 and S3 with assumed true DLT rates at each dose as defined below. S1 and S2 presents scenarios where the true MTD are at d(1) and d(3) respectively. S3 presents a setting whereby all doses are too toxic.
 
@@ -205,7 +205,7 @@ out3<- cbind.data.frame(
       Stop.Tox  =   c("", stop.fun(sim1_3$summary$prob_stop, "Tox"), ""),
       Stop.nMTD =   c("", stop.fun(sim1_3$summary$prob_stop, "Con"), "")
 )
-dimnames(out3)[[2]][1:length(dose.labels)]<-paste("d(", seq(-2,4,by=1),")", sep="")
+dimnames(out3)[[2]][1:length(dose.labels)]<-paste0("d(", seq(-2,4,by=1),")")
 
 
 out<- rbind.data.frame(
@@ -219,7 +219,7 @@ out<- rbind.data.frame(
 
 ### Simulation Results 
 
-The table below presents the simulation results for the selected scenarios, with true DLT rates, probability of selecting a dose as the MTD and the number of subjects allocated to each dose. It also presents the probability of stopping early due to toxicity or having sufficient number of patients at the MTD.  
+The table below presents the simulation results for the selected scenarios, with prior and true DLT rates, probability of selecting a dose as the MTD and the number of subjects allocated to each dose. It also presents the probability of stopping early due to toxicity or having sufficient number of subjects at the MTD.  
 ```{r, echo=FALSE}
 knitr::kable(out)
 ```
@@ -233,39 +233,44 @@ Using the specific parameters above, we can produce the DTP for the initial 4 co
 ```{r}
 start.dose.level<-3   #(eg. 1,2,3 etc)
 
-viola_dtps <- calculate_dtps(next_dose = start.dose.level, cohort_sizes = c(cohort.size, cohort.size, cohort.size), dose_func = applied_crm, prior = prior.DLT, target = target.DLT,
+viola_dtp <- calculate_dtps(next_dose = start.dose.level, cohort_sizes = c(cohort.size, cohort.size, cohort.size), dose_func = applied_crm, prior = prior.DLT, target = target.DLT,
 stop_func = stop_func, scale = sqrt(prior.var),
 no_skip_esc = no_skip_esc, no_skip_deesc = no_skip_deesc,
 global_coherent_esc = global_coherent_esc)
-
 ```
 
 In Viola, there are 7 dose levels where the starting dose level is 3. For display purposes, we would use the dose-labels as used in Viola, which range from d(-2) to d(4), with starting dose at d(0).
 
 ```{r}
 # Using dose labels                         
-viola_dtps[seq(1, ncol(viola_dtps), by=2)] <- viola_dtps[seq(1, ncol(viola_dtps), by=2)] - start.dose.level
-dimnames(viola_dtps)[[2]]<-c('C1 Dose', 'C1 No.DLT',  'C2 Dose', 'C2 No.DLT','C3 Dose', 'C3 No.DLT', 'C4 Dose')
+viola_dtp[seq(1, ncol(viola_dtp), by=2)] <- viola_dtp[seq(1, ncol(viola_dtp), by=2)] - start.dose.level
+
+# Indicate when stopping early occurs
+indSTOP<-is.na(viola_dtp[seq(1,ncol(viola_dtp), by=2)])
+viola_dtp.pretty<-viola_dtp
+viola_dtp.pretty[seq(1,ncol(viola_dtp.pretty), by=2)][indSTOP]<-"STOP"
+
+dimnames(viola_dtp.pretty)[[2]]<-c('C1 Dose', 'C1 No.DLT',  'C2 Dose', 'C2 No.DLT','C3 Dose', 'C3 No.DLT', 'C4 Dose')
 ```
 
 ### Displaying DTP in a table format
 ```{r, echo=FALSE}
-knitr::kable(viola_dtps)
+knitr::kable(viola_dtp.pretty)
 ```
-"NA" denote recommending the trial should be stopped early. 
+
+The term "NA" denotes not applicable. 
 
 ###  Displaying DTP as a flow diagram
 
 Another way to display DTP is via a flow diagram. To obtain DTP flow diagram for Cohorts 1-3,
 
 ```{r, fig.width=8, fig.height=6}
-dtpflow(viola_dtps)
+dtpflow(viola_dtp)
 ```
 
 One can utilise the DTP for the initial cohorts to discuss with the investigators on the working of the proposed CRM design to check agreement and highlight unanticpated pathways. One can further calibrate the model by fine-tuning the model parameters to achieve DTP that are agreeable by the investigators. In particular, it would be useful to check that the investigators are in agreement on when a trial should be stopped early due to toxicity if excessive DLTs are observed in the initial cohorts. One should then evaluate average model performance of the fine-tuned model by re-running simulations to ensure that it is still favorable (see Figure 2 in [2]). When it comes to choosing a **_desirable_** model-based design,the final recommended model should be one that not only has promising operating characteristics but achieves DTP which the investigators are happy to adopt in practice [2,5].
 
-In the case for Viola, the investigators were keen to only stop the trial early if they saw 2 or 3 DLTs out of the first 3 patients at the lowest dose, d(-2), which would indicate that all the doses were too toxic. This guided the choice of $y$ to be around 0.72. 
-
+In the case for Viola, the investigators were keen to only stop the trial early if they saw 2 or 3 DLTs out of the first 3 subjects at the lowest dose, d(-2), which would indicate that all the doses were too toxic. This guided the choice of $y$ to be around 0.72. 
 
 --------
 
@@ -288,7 +293,7 @@ C2 <- applied_crm(prior=prior.DLT, target = target.DLT, tox = DLT.outcomes, leve
                               global_coherent_esc = global_coherent_esc,
                               scale = sqrt(prior.var))
 results<-cbind.data.frame(Dose=paste0("d(", dose.labels, ")"), summary_crm(C2)[2:ncol(summary_crm(C2))])
-dimnames(results)[[2]][2:ncol(results)]<-c("Prior DLT", "No.Patients", "No.DLT", "Posterior DLT (90% PI)")
+dimnames(results)[[2]][2:ncol(results)]<-c("Prior DLT", "No.subjects", "No.DLT", "Posterior DLT (90% PI)")
 ```
 
 Recommended dose for next cohort is Dose level 
@@ -302,7 +307,7 @@ Or dose label
 paste0("d(", C2$mtd-start.dose.level, ")"  )
 ```
 
-The table below presents the CRM updates with prior DLT rates, number of evaluable patients, number of DLTs and posterior DLT rates with 90% probability interval at each of the dose level.
+The table below presents the CRM updates with prior DLT rates, number of evaluable subjects, number of DLTs and posterior DLT rates with 90% probability interval at each of the dose level.
 
 ```{r, echo=FALSE}
 knitr::kable(results)
@@ -322,7 +327,7 @@ plot_crm(C2, dose_labels = paste0("d(",dose.labels,")"), cohort_sizes = c(3,3), 
         )
 ```
 
-This figure presents the updates of the dose toxicity curves with evolving estimates of DLT rates at each dose, estimated at the end of each cohort. The black line represents the prior estimates of DLT rates at each dose.
+This figure presents the updates of the dose toxicity curves with evolving estimates of DLT rates at each dose, estimated at the end of each cohort. The black curve represents the prior estimates of DLT rates at each dose.
 
 
 ## Update DTP for Subsequent Cohorts
@@ -360,8 +365,7 @@ dtpflow(dtp_c3, cohort.labels = c('C3', 'C4', 'C5') )
 --------
 
 # References
-[1] Ken Cheung (2013). dfcrm: Dose-finding by the continual reassessment method. R package version 0.2-2.
-  https://CRAN.R-project.org/package=dfcrm
+[1] Ken Cheung (2013). dfcrm: Dose-finding by the continual reassessment method. R package version 0.2-2. https://CRAN.R-project.org/package=dfcrm
 
 [2] Yap, C., Billingham, L. J., Cheung, Y. K., Craddock, C., & O'Quigley, J. (2017). Dose Transition Pathways: The missing link between complex dose-finding designs and simple decision-making. Clinical Cancer Research, 23(24), 7440-7447
 
@@ -372,6 +376,3 @@ dtpflow(dtp_c3, cohort.labels = c('C3', 'C4', 'C5') )
 [5] Craddock C, Slade D, Santo C De, Wheat R, Ferguson P, Hodgkinson A, Brock K, Cavenagh J, Ingram W, Dennis M, Malladi R, Siddique S, Mussai F and Yap C (2018) Combination lenalidomide and azacitidine: a novel salvage therapy in patients who relapse after allogeneic stem cell transplantation for acute myeloid leukemia. Journal of Clinical Oncology (2019), JCO-18.
 
 [6] Wheeler, G.M., Mander, A.P., Bedding, A., Brock, K., Cornelius, V., Grieve, A.P., Jaki, T., Love, S.B., Weir, C.J., Yap, C. and Bond, S.J., 2019. How to design a dose-finding study using the continual reassessment method. BMC medical research methodology, 19(1), p.18.
-
-
-

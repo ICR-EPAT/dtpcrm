@@ -2,12 +2,12 @@
 #'
 #' @description This is a function for use with applied_crm for the stop_func
 #'     arguement. The rule will suggest stopping in the scenario that a maximum
-#'     number of patients has been recruited.
+#'     number of subjects has been recruited.
 #'
 #' @usage stop_for_sample_size(x, max_sample_size)
 #'
 #' @param x An object of class 'mtd'.
-#' @param max_sample_size An integer; specifying the maxmium number of patients
+#' @param max_sample_size An integer; specifying the maxmium number of subjects
 #'     to be recruited.
 #'
 #' @details This function is an example of a possible stopping function to be

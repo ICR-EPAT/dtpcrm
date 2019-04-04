@@ -1,5 +1,5 @@
 # obswin - observation period in units of time (days)
-# minfu - minimum follow-up required for each patient in cohort to conduct model update
+# minfu - minimum follow-up required for each subject in cohort to conduct model update
 # recrate - # of pts recruited per obswin e.g. 5
 # initdes - vector specifying the doses to be assisned to pts as per the initial design e.g. c(1,1,2,2,3,3,4,4,4,4)
 
@@ -18,14 +18,14 @@
 #' @param prior A vector of prior estimates of toxicity probabilties for the
 #'     dose levels.
 #' @param target The target DLT rate.
-#' @param max_sample_size The maximum number of patients to be recruited in any
+#' @param max_sample_size The maximum number of subjects to be recruited in any
 #'     simulation.
 #' @param num_sims The total number of simulations to be run.
-#' @param cohort_size The size of the patient cohorts. Default is 1.
-#' @param obswin The observation period for total patient follow up.
-#' @param minfu The minimum amount of follow-up required for each patient.
-#' @param recrate The number of patients recruited per obswin.
-#' @param initdes A vector specifying the doses to be assisned to patients as
+#' @param cohort_size The size of the cohorts. Default is 1.
+#' @param obswin The observation period for total subject follow up.
+#' @param minfu The minimum amount of follow-up required for each subjects.
+#' @param recrate The number of subjects recruited per obswin.
+#' @param initdes A vector specifying the doses to be assisned to subjects as
 #'     per the initial design.
 #' @param dose_func The function to be employed in executing the CRM. Default is
 #'     applied_titecrm.
@@ -110,13 +110,13 @@ applied_titecrmts_sim <- function(true_tox, prior, target,
       cohort_tox = stats::rbinom(n = cohort_size, size = 1, prob = true_tox[dose])
       cohort_level = rep(dose, cohort_size)
       cohort_fu = (rectime * (cohort_size - 1)) - (rectime * c(0:(cohort_size-1))) + minfu # follow-up based on fixed accrual from recrate TODO allow for non fixed accrual
-      cohort_fu[cohort_tox == 1] <- obswin # weight of 1 for dlt patients
+      cohort_fu[cohort_tox == 1] <- obswin # weight of 1 for dlt subjects
 
 
       # Accumulate data
       tox <- c(tox, cohort_tox)
       level <- c(level, cohort_level)
-      fu <- fu + (cohort_size * rectime) + minfu # add on additional follow-up for previous patients
+      fu <- fu + (cohort_size * rectime) + minfu # add on additional follow-up for previous subjects
       fu <- c(fu, cohort_fu)
       fu <- pmin(fu, obswin) # fix follow-up to maximum of observational period
 

@@ -1,7 +1,7 @@
 #' @title Stopping for sample size reached
 #'
 #' @description This is a function for use with applied_crm for the stop_func
-#'     arguement. The rule will suggest stopping in the scenario that a maximum
+#'     argument. The rule will suggest stopping in the scenario that a maximum
 #'     number of subjects has been recruited.
 #'
 #' @usage stop_for_sample_size(x, max_sample_size)
@@ -47,7 +47,7 @@ stop_for_sample_size <- function(x, max_sample_size) {
 #' @title Stopping for excess toxicity - Empiric method
 #'
 #' @description This is a function for use with applied_crm for the stop_func
-#'     arguement. The rule will suggest stopping in the scenario that the
+#'     argument. The rule will suggest stopping in the scenario that the
 #'     probability of toxicity being greater than a specifed value at a defined
 #'     dose is greater than some further specified certainty value.
 #'
@@ -114,7 +114,7 @@ stop_for_excess_toxicity_empiric <- function(x, tox_lim, prob_cert, dose = 1,
 #' @title Stopping for excess toxicity - Logistic method
 #'
 #' @description This is a function for use with applied_crm for the stop_func
-#'     arguement. The rule will suggest stopping in the scenario that the
+#'     argument. The rule will suggest stopping in the scenario that the
 #'     probability of toxicity being greater than a specifed value at a defined
 #'     dose is greater than some further specified certainty value.
 #'
@@ -178,7 +178,7 @@ stop_for_excess_toxicity_logistic <- function(x, tox_lim, prob_cert, dose = 1,
 #' @title Stopping for consensus
 #'
 #' @description This is a function for use with applied_crm for the stop_func
-#'     arguement. The rule will suggest stopping in the scenario that a
+#'     argument. The rule will suggest stopping in the scenario that a
 #'     particular number of patients has already been treated at the current
 #'     recommended MTD.
 #'

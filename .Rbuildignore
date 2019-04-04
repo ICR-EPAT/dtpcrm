@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+format.sh
+.clang-format
+.travis.yml
+README.md

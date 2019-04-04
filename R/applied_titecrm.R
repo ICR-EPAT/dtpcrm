@@ -12,7 +12,7 @@
 #'     dose levels.
 #' @param target The target DLT rate.
 #' @param tox A vector of patient outcomes; 1 indicates toxicity, 0 otherwise.
-#' @param level A vector of dose levels assigned to patients. The length of
+#' @param level A vector of dose levels assigned to subjects. The length of
 #'     level must be equal to that of tox.
 #' @param followup A vector of patient follow up times. The length must be equal
 #'     to that of tox.
@@ -43,11 +43,11 @@
 #' posterior variance of the model parameter.}  \item{estimate}{Estimate of the
 #' model parameter.}  \item{method}{The method of estimation.}  \item{model}{The
 #' working model.}  \item{dosescaled}{The scaled doses obtained via backward
-#' substitution.}  \item{tox}{Patients' toxicity indications.}
-#' \item{level}{Dose levels assigned to patients.}  \item{followup}{Follow-up
-#' times of patients.}  \item{obswin}{Observation window with respect to which
-#' the MTD is defined.}  \item{weights}{Weights assigned to patients.}
-#' \item{entry}{Entry times of patients.}  \item{exit}{Exit times of patients.}
+#' substitution.}  \item{tox}{subjects' toxicity indications.}
+#' \item{level}{Dose levels assigned to subjects.}  \item{followup}{Follow-up
+#' times of subjects.}  \item{obswin}{Observation window with respect to which
+#' the MTD is defined.}  \item{weights}{Weights assigned to subjects.}
+#' \item{entry}{Entry times of subjects.}  \item{exit}{Exit times of subjects.}
 #' \item{scheme}{Weighting scheme.}  \item{stop}{A logical variable detailing if
 #' the trial should be stopped; TRUE to stop, FALSE otherwise}
 #' \item{stop_reason}{A detailed reason for why the trial should be

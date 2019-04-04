@@ -77,7 +77,7 @@
 #'     arguments related to applied_crm see.
 #'
 #' @return Produces a dataframe containing all possible permutations of outcomes
-#'     for each cohort to considered based on cohort_sizes and the recommended
+#'     for each cohort based on cohort_sizes and the recommended
 #'     doses for such permutations.
 #'
 #' @examples
@@ -92,11 +92,11 @@
 #'
 #' dose_func <- applied_crm
 #'
-#' dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
+#' DTP = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
 #'                       prev_dose = prev_dose, dose_func = applied_crm,
 #'                       prior = prior, target = target)
 #'
-#' @keywords CRM dtps dtpcrm
+#' @keywords CRM DTP dtpcrm
 #'
 #' @export
 calculate_dtps = function(next_dose, cohort_sizes, prev_tox = c(),

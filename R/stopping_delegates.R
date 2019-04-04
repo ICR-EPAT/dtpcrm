@@ -27,8 +27,7 @@
 #' }
 #'
 #' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-#' ##                    stop_func = stop_rule)
+#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #'
@@ -84,8 +83,7 @@ stop_for_sample_size <- function(x, max_sample_size) {
 #' }
 #'
 #' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-#' ##                    stop_func = stop_rule)
+#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #'
@@ -152,8 +150,7 @@ stop_for_excess_toxicity_empiric <- function(x, tox_lim, prob_cert, dose = 1,
 #' }
 #'
 #' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-#' ##                    stop_func = stop_rule)
+#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #'
@@ -208,8 +205,7 @@ stop_for_excess_toxicity_logistic <- function(x, tox_lim, prob_cert, dose = 1,
 #' }
 #'
 #' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-#' ##                    stop_func = stop_rule)
+#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #' @export

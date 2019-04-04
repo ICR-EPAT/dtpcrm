@@ -1,6 +1,3 @@
-# obswin - observation period in units of time (days)
-# minfu - minimum follow-up required for each subject in cohort to conduct model update
-# recrate - # of pts recruited per obswin e.g. 5
 
 #' @title Simulate TITE-CRM trials using specified design options
 #'
@@ -67,8 +64,6 @@ applied_titecrm_sim <- function(true_tox, prior, target,
   iterations <- list()
   for(i in 1:num_sims) {
     # Start afresh.
-    # TODO insert previously observed outcomes here for
-    # simulations of partially-observed trials
     tox <- c()
     level <- c()
     fu <- c()
@@ -113,7 +108,6 @@ applied_titecrm_sim <- function(true_tox, prior, target,
     print(i)
     iterations[[i]] <- list(tox = tox, level = level, mtd = dose,
                             stop = stop, stop_reason = stop_reason)
-    # TODO: further reporting
   }
 
   # Summarise
@@ -133,9 +127,7 @@ applied_titecrm_sim <- function(true_tox, prior, target,
       sum(doses_given == d, na.rm = TRUE) / num_sims),
     prob_dose_given = sapply(1:length(prior), function(d)
       sum(doses_given == d, na.rm = TRUE) / length(doses_given))
-    # TODO: further reporting
   )
-
 
   return(list(summary = summary, iterations = iterations))
 }

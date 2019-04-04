@@ -1,8 +1,4 @@
 
-#   Build and Reload Package:  'Ctrl + Shift + B'
-#   Check Package:             'Ctrl + Shift + E'
-#   Test Package:              'Ctrl + Shift + T'
-
 #' @title Execute the CRM
 #'
 #' @description applied_crm is used to execute the continual reassessment method
@@ -75,11 +71,8 @@
 #'
 #' @export
 applied_crm <- function(prior, target, tox, level,
-                        # The above signature should be mimicked by specialisations
                         no_skip_esc = TRUE, no_skip_deesc = TRUE,
-                        # coherent_esc = FALSE, coherent_deesc = FALSE,
                         global_coherent_esc = TRUE,
-                        # TODO: I don't imagine anyone wants global_coherent_deesc
                         stop_func = NULL, ...) {
 
   # Start with the dfcrm decision
@@ -96,18 +89,6 @@ applied_crm <- function(prior, target, tox, level,
     x$mtd <- min(level) - 1
   }
 
-  # # Coherence, or local coherence, in escalation means not escalating
-  # # immediately after a toxicity event
-  # if (coherent_esc & tail(tox, 1) == 1) {
-  #   x$mtd <- min(x$mtd, tail(level, 1))
-  # }
-
-  # # Coherence, or local coherence, in de-escalation means not de-escalating
-  # # immediately after a non-toxicity event
-  # if (coherent_deesc & tail(tox, 1) == 0) {
-  #   x$mtd <- max(x$mtd, tail(level, 1))
-  # }
-
   # Global coherence in escalation means not escalating from a dose with an
   # observed toxicity rate exceeding the target
   if (global_coherent_esc) {
@@ -119,26 +100,12 @@ applied_crm <- function(prior, target, tox, level,
   }
 
   # Invoke decision to determine whether trial should stop if stop_func is given
-  # if(!is.null(stop_func)) {
-  #   stop_decision = stop_func(x)
-  #   if(is.list(stop_decision)) {
-  #     x$stop <- stop_decision[[1]]
-  #     x$stop_reason <- stop_decision[[2]]
-  #   } else {
-  #     x$stop <- stop_decision
-  #   }
-  # } else {
-  #   x$stop <- FALSE
-  #   x$stop_reason <- NULL
-  # }
   if(!is.null(stop_func)) {
     x = stop_func(x)  # Let stopping delegate decorate x
   }
 
   return(x)
 }
-
-# provides summary dataframe of applied_crm dose level information - useful for reports ----
 
 #' @title Provide a summary of applied_crm output
 #'
@@ -149,9 +116,9 @@ applied_crm <- function(prior, target, tox, level,
 #'
 #' @param x An object assigned to be the output from applied_crm.
 #'
-#' @details This functions take an object of class "mtd" and produces a
+#' @details This function takes an object of class "mtd" and produces a
 #'     dataframe containing a summary of information within the
-#'     object. Specifcally it shows the dose levels, prior probabilities, number
+#'     object. Specifically it shows the dose levels, prior probabilities, number
 #'     of evaluable patients, number of DLTs and the posterior probability
 #'     estimates along with confidence/probability intervals if estimated in the
 #'     underlying object.
@@ -172,8 +139,7 @@ applied_crm <- function(prior, target, tox, level,
 #' level  <- c(1, 1, 1, 2, 2, 2)
 #'
 #' ## crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                        coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-#' ##                        stop_func = NULL, ...)
+#' ##                        global_coherent_esc = TRUE, stop_func = NULL, ...)
 #'
 #' ## summary_crm(crm_obj)
 #'
@@ -204,19 +170,11 @@ summary_crm <- function(x) {
 }
 
 
-# Produces a plot of current dose-toxicity curve against prior for applied_crm obj
-# and outputs png of plot to current directory if 'file' is given. Potential for
-# histroy of curves by cohort if cohort.sizes is provided - dose_func is required to do this.
-# height and width are for pixels of output plot.
-# current colour limit for number of cohorts is 20
-# dose_labels allow users to specify dose labels to be used instead of standard dose levels 1:n
-
-
 #' @title Plot of posterior estimates from the CRM
 #'
-#' @description Provides funtionality for plotting the posterior estimates of
+#' @description Provides functionality for plotting the posterior estimates of
 #'     probabilities of toxicity at each dose level for both the most recent
-#'     update and for past cohort updates if requested.
+#'     update and for past cohort updates if specified.
 #'
 #' @usage plot_crm(crm, dose_labels, cohort_sizes = NULL, file = NULL,
 #'                 height = 600, width = 750, dose_func = NULL, ...,
@@ -239,12 +197,12 @@ summary_crm <- function(x) {
 #'     to be used to when implementing the CRM for previous cohorts.
 #' @param ... Arguments to be provided to dose_func detailing CRM specification.
 #'     See applied_crm.
-#' @param ylim Undocumented item.
-#' @param lwd Undocumented item.
-#' @param cex.axis Undocumented item.
-#' @param cex.lab Undocumented item.
-#' @param cex Undocumented item.
-#' @param cohort.last Undocumented item.
+#' @param ylim The y-axis range. Default is c(0, 1)
+#' @param lwd line width relative to the default (default=1). 2 is twice as wide. Default is 1.
+#' @param cex.axis The magnification to be used for axis annotation relative to the current setting of cex. Default is 1.
+#' @param cex.lab The magnification to be used for x and y labels relative to the current setting of cex. Default is 1.
+#' @param cex A numerical value giving the amount by which plotting text and symbols should be magnified relative to the default. Default is 1.
+#' @param cohort.If TRUE, the last cohort will have lwd = 6 for emphasis. Default is FALSE. 
 #'
 #' @details Produces a plot of current dose-toxicity estimates including the
 #'     priors and outputs a .png of plot to current directory if 'file' is
@@ -258,8 +216,7 @@ summary_crm <- function(x) {
 #' level  <- c(1, 1, 1, 2, 2, 2)
 #'
 #' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-#' ##                    stop_func = NULL)
+#' ##                    global_coherent_esc = TRUE, stop_func = NULL)
 #'
 #' ##  plot_crm(crm, dose_labels = c("1", "2", "3"))
 #'

@@ -91,7 +91,7 @@ applied_crm_sim <- function(true_tox, prior, target,
     prob_stop = table(substr(unlist(sapply(iterations, function(x) x$stop_reason)), 1, 15)) / num_sims,
     mtd = sapply(1:length(prior), function(d)
       sum(dose_selections == d, na.rm = TRUE) / num_sims),
-    # Summarise doses given to patients
+    # Summarise doses given to subjects
     doses_given = sapply(1:length(prior), function(d)
       sum(doses_given == d, na.rm = TRUE) / num_sims),
     prob_dose_given = sapply(1:length(prior), function(d)

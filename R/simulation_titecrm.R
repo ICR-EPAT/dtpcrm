@@ -122,7 +122,7 @@ applied_titecrm_sim <- function(true_tox, prior, target,
     prob_stop = mean(sapply(iterations, function(x) x$stop)),
     mtd = sapply(1:length(prior), function(d)
       sum(dose_selections == d, na.rm = TRUE) / num_sims),
-    # Summarise doses givne to patients
+    # Summarise doses given to subjects
     doses_given = sapply(1:length(prior), function(d)
       sum(doses_given == d, na.rm = TRUE) / num_sims),
     prob_dose_given = sapply(1:length(prior), function(d)

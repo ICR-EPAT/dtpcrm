@@ -52,7 +52,7 @@
   return(dose_recs)
 }
 
-#' @title Produce the Dose transition pathways
+#' @title Produce the Dose Transition Pathways
 #'
 #' @description calculate_dtps is used to produce the dose transition pathways
 #'     for the continual reassessment method with specified design

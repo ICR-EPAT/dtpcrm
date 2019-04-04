@@ -35,8 +35,8 @@ stop_rule <- function(x){
   x <- stop_for_consensus_reached(x, req_at_mtd = 6)
 }
 
-## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-##                    global_coherent_esc = TRUE, stop_func = stop_rule)
+crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+                   global_coherent_esc = TRUE, stop_func = stop_rule)
 
 }
 \keyword{CRM}

@@ -53,12 +53,12 @@
 dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 
   ### Check dtptable for correct number of cohorts
-  if(ncol(dtptable) != 7) {stop('dtptable is required to have length(cohort_sizes) = 3')} 
-  
+  if(ncol(dtptable) != 7) {stop('dtptable is required to have length(cohort_sizes) = 3')}
+
   ### m: vector of cohort size for each cohort, e.g. m<-c(3,3,3) for cohort sizes of 3  ####
 
-    m <- c(max(dtptable[ , 2], na.rm = T), 
-           max(dtptable[ , 4], na.rm = T), 
+    m <- c(max(dtptable[ , 2], na.rm = T),
+           max(dtptable[ , 4], na.rm = T),
            max(dtptable[ , 6], na.rm = T))
 
   ### Obtain unique doses for Cohort 2 and 3    #####

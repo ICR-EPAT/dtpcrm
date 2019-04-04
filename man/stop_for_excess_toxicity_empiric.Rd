@@ -48,8 +48,8 @@ stop_rule <- function(x){
   x <- stop_for_excess_toxicity_empiric(x, tox_lim = 0.25, prob_cert = 0.85)
 }
 
-## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-##                    global_coherent_esc = TRUE, stop_func = stop_rule)
+crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+                   global_coherent_esc = TRUE, stop_func = stop_rule)
 
 }
 \keyword{CRM}

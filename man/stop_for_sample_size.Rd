@@ -34,8 +34,8 @@ stop_rule <- function(x){
   x <- stop_for_sample_size(x, max_sample_size = 20)
 }
 
-## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-##                    global_coherent_esc = TRUE, stop_func = stop_rule)
+crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+                   global_coherent_esc = TRUE, stop_func = stop_rule)
 
 }
 \keyword{CRM}

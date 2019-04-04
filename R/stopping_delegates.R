@@ -26,8 +26,8 @@
 #'   x <- stop_for_sample_size(x, max_sample_size = 20)
 #' }
 #'
-#' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
+#' crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #'
@@ -82,8 +82,8 @@ stop_for_sample_size <- function(x, max_sample_size) {
 #'   x <- stop_for_excess_toxicity_empiric(x, tox_lim = 0.25, prob_cert = 0.85)
 #' }
 #'
-#' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
+#' crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #'
@@ -149,8 +149,8 @@ stop_for_excess_toxicity_empiric <- function(x, tox_lim, prob_cert, dose = 1,
 #'   x <- stop_for_excess_toxicity_logistic(x, tox_lim = 0.25, prob_cert = 0.85)
 #' }
 #'
-#' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
+#' crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #'
@@ -204,8 +204,8 @@ stop_for_excess_toxicity_logistic <- function(x, tox_lim, prob_cert, dose = 1,
 #'   x <- stop_for_consensus_reached(x, req_at_mtd = 6)
 #' }
 #'
-#' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    global_coherent_esc = TRUE, stop_func = stop_rule)
+#' crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'                    global_coherent_esc = TRUE, stop_func = stop_rule)
 #'
 #' @keywords CRM stop dtpcrm
 #' @export

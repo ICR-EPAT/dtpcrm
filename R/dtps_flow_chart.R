@@ -1,13 +1,10 @@
 
-#### Functions to create numbers of DLTs and coloured lines ########
-
 .M.mat <- function(numrow, c, M, c.sz){
   for(i in 1:(c.sz + 1)){
     M[numrow + i - 1, c] <- as.character(i - 1)
   }
   return(M)
 }
-
 
 # .col.linearrow.func <- function(newdose, start.dose, arr.lcolour, ind, ind.col){
 #   arr.lcolour[ind,ind.col][newdose > start.dose] <- "green"
@@ -17,10 +14,6 @@
 # }
 
 
-#### Function to produce DTP Flow Diagram             ####
-#### based on DLT outcomes from  Cohort (X) and (X+1) ####
-#### Leading to Recommended Doses for Cohort (X+2)    ####
-
 #' @title Produce DTP flow diagram
 #'
 #' @description dtpflow will produce a flow diagram of the possible paths for
@@ -28,13 +21,12 @@
 #'
 #' @usage dtpflow(dtptable, cohort.labels = c('C1', 'C2', 'C3'))
 #'
-#' @param dtptable a dataframe produced by calculate_dtps.
+#' @param dtptable a dataframe produced by calculate_dtps where cohort_sizes was of length 3.
 #' @param cohort.labels A vector of length 3, containing character strings for
 #'     the cohort labels.
 #'
 #' @details The function will produce a visual flow diagram for the first three
-#'     cohorts of the provided dataframe, a colour system is used to represent
-#'     escalation / de-escalation.
+#'     cohorts of the provided dataframe.
 #'
 #' @examples
 #'
@@ -60,6 +52,9 @@
 #' @export
 dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 
+  ### Check dtptable for correct number of cohorts
+  if(ncol(dtptable) != 7) {stop('dtptable is required to have length(cohort_sizes) = 3')} 
+  
   ### m: vector of cohort size for each cohort, e.g. m<-c(3,3,3) for cohort sizes of 3  ####
 
     m <- c(max(dtptable[ , 2], na.rm = T), 
@@ -114,10 +109,6 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
                      byrow = TRUE, data = "black")
 
 
-
-
-  #### Coloured lines ####
-
   ### C1 to C2  ------------------
   ind.row <- 2
   ind.col = 1
@@ -154,8 +145,6 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
 
   graphics::par(mfrow=c(1, 1))
 
-  #jpeg('DTP_FlowDiagram.jpg')
-
   diagram::plotmat(M, pos = c(1, length(C2.dose), length(C3.alldose)),
           curve = 0, name = names, lwd = 2,absent=99,
           cex=1,dtext=0.08,box.lwd = 1.5, cex.txt = 0.9,
@@ -175,7 +164,7 @@ dtpflow <- function(dtptable, cohort.labels = c('C1', 'C2', 'C3')){
   graphics::text(x = 0.02, y = 0.25, cohort.labels[3], cex = 0.8)
 
 }
-#dev.off()
+
 
 
 

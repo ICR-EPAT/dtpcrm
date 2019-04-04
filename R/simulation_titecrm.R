@@ -1,5 +1,5 @@
 # obswin - observation period in units of time (days)
-# minfu - minimum follow-up required for each patient in cohort to conduct model update
+# minfu - minimum follow-up required for each subject in cohort to conduct model update
 # recrate - # of pts recruited per obswin e.g. 5
 
 #' @title Simulate TITE-CRM trials using specified design options
@@ -17,14 +17,14 @@
 #' @param prior A vector of prior estimates of toxicity probabilties for the
 #'     dose levels.
 #' @param target The target DLT rate.
-#' @param max_sample_size The maximum number of patients to be recruited in any
+#' @param max_sample_size The maximum number of subjects to be recruited in any
 #'     simulation.
 #' @param first_dose The first dose level to tested.
 #' @param num_sims The total number of simulations to be run.
-#' @param cohort_size The size of the patient cohorts. Default is 1.
-#' @param obswin The observation period for total patient follow up.
-#' @param minfu The minimum amount of follow-up required for each patient.
-#' @param recrate The number of patients recruited per obswin.
+#' @param cohort_size The size of the subject cohorts. Default is 1.
+#' @param obswin The observation period for total subject follow up.
+#' @param minfu The minimum amount of follow-up required for each subjects.
+#' @param recrate The number of subjects recruited per obswin.
 #' @param dose_func The function to be employed in executing the CRM. Default is
 #'     applied_titecrm.
 #' @param ... Any other arguements detailed in dtp::applied_titecrm.

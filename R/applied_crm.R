@@ -33,7 +33,7 @@
 #' This function is largely a wrapper for the dfcrm function crm, it provides
 #' functionality for additional design choices for the CRM including global coherency
 #' and stopping for excess toxicity and stopping when sufficient number of subjects are dosed at MTD
-#' 
+#'
 #'
 #' @return An object of class "mtd" is returned as per package "dfcrm",
 #'     additional information is provided if a stopping function is used.
@@ -138,10 +138,10 @@ applied_crm <- function(prior, target, tox, level,
 #' tox    <- c(0, 0, 1, 0, 1, 1)
 #' level  <- c(1, 1, 1, 2, 2, 2)
 #'
-#' ## crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                        global_coherent_esc = TRUE, stop_func = NULL, ...)
+#' crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'                        global_coherent_esc = TRUE, stop_func = NULL)
 #'
-#' ## summary_crm(crm_obj)
+#' summary_crm(crm_obj)
 #'
 #' @keywords CRM dtpcrm
 #'
@@ -202,7 +202,7 @@ summary_crm <- function(x) {
 #' @param cex.axis The magnification to be used for axis annotation relative to the current setting of cex. Default is 1.
 #' @param cex.lab The magnification to be used for x and y labels relative to the current setting of cex. Default is 1.
 #' @param cex A numerical value giving the amount by which plotting text and symbols should be magnified relative to the default. Default is 1.
-#' @param cohort.last If TRUE, the last cohort will have lwd = 6 for emphasis. Default is FALSE. 
+#' @param cohort.last If TRUE, the last cohort will have lwd = 6 for emphasis. Default is FALSE.
 #'
 #' @details Produces a plot of current dose-toxicity estimates including the
 #'     priors and outputs a .png of plot to current directory if 'file' is

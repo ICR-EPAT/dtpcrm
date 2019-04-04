@@ -1,4 +1,4 @@
-#' @title Execute the CRM
+#' @title Execute the TITE-CRM
 #'
 #' @description applied_titecrm is used to execute the time-to-event continual
 #'     reassessment method with specified design options to determine the dose

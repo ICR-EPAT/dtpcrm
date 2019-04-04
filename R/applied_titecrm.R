@@ -14,9 +14,9 @@
 #' @param tox A vector of subject outcomes; 1 indicates toxicity, 0 otherwise.
 #' @param level A vector of dose levels assigned to subjects. The length of
 #'     level must be equal to that of tox.
-#' @param followup A vector of subject follow up times. The length must be equal
+#' @param followup A vector of follow up times of subjects. The length must be equal
 #'     to that of tox.
-#' @param obswin The observation period for total subject follow up.
+#' @param obswin The observation period with respect to which DLT is assessed. 
 #' @param no_skip_esc If FALSE, the method will not enforce no skipping of doses
 #'     in escalation. Default is TRUE.
 #' @param no_skip_deesc If FALSE, the method will not enforce no skipping of
@@ -46,7 +46,7 @@
 #' substitution.}  \item{tox}{subjects' toxicity indications.}
 #' \item{level}{Dose levels assigned to subjects.}  \item{followup}{Follow-up
 #' times of subjects.}  \item{obswin}{Observation window with respect to which
-#' the MTD is defined.}  \item{weights}{Weights assigned to subjects.}
+#' DLT is assessed.}  \item{weights}{Weights assigned to subjects.}
 #' \item{entry}{Entry times of subjects.}  \item{exit}{Exit times of subjects.}
 #' \item{scheme}{Weighting scheme.}  \item{stop}{A logical variable detailing if
 #' the trial should be stopped; TRUE to stop, FALSE otherwise}

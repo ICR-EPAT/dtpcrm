@@ -52,7 +52,7 @@
 #'                       recrate = 3, initdes = c(rep(1, 3), rep(2, 3), rep(3, 15)),
 #'                       dose_func = applied_titecrm)
 #'
-#' @keywords CRM Simulation TITE dtpcrm
+#' @keywords CRM Simulations TITE-CRM dtpcrm
 #'
 #' @export
 applied_titecrmts_sim <- function(true_tox, prior, target,

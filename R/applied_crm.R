@@ -17,9 +17,9 @@
 #' @param global_coherent_esc If FALSE, the method will not enforce global
 #'     coherent escalation, that is, escalation if the overall rate of toxicity
 #'     seen at the current dose level is above the target rate. Default is TRUE.
-#' @param stop_func An optional arguement to provide a function which will
+#' @param stop_func An optional argument to provide a function which will
 #'     utilised alongside the CRM to determine if the trial should be stopped.
-#' @param ... Any other arguements detailed in dfcrm::crm.
+#' @param ... Any other arguments detailed in dfcrm::crm.
 #'
 #' @details For maximum likelihood estimation, the variance of the estimate of beta
 #'     (post.var) is approximated by the posterior variance of beta with a
@@ -30,9 +30,9 @@
 #' prior on beta is normal with mean 0. Exponentiation of beta ensures an increasing
 #' dose-toxicity function.
 #'
-#' This function is largely a wrapper for the dfcrm function crm, it provides
+#' This function is largely a wrapper for the dfcrm function crm.  It provides
 #' functionality for additional design choices for the CRM including global coherency
-#' and stopping for excess toxicity and stopping when sufficient number of subjects are dosed at MTD
+#' and stopping for excess toxicity and stopping when sufficient number of subjects are dosed at MTD.
 #'
 #'
 #' @return An object of class "mtd" is returned as per package "dfcrm",

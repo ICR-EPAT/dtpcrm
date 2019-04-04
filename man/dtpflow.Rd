@@ -26,7 +26,7 @@ prior  <- c(0.1, 0.2, 0.5)
 target <- 0.15
 prev_tox <- c(0, 0, 0)
 prev_dose <- c(2, 2, 2)
-cohort_sizes <- c(2, 3)
+cohort_sizes <- c(2, 3, 3)
 
 next_dose = applied_crm(prior = prior, target = target,
                         tox = prev_tox, level = prev_dose)$mtd
@@ -37,7 +37,7 @@ dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
                       prev_dose = prev_dose, dose_func = applied_crm,
                       prior = prior, target = target)
 
-## dtpflow(dtptable = dtps, cohort.labels = c('C1', 'C2', 'C3'))
+dtpflow(dtptable = dtps, cohort.labels = c('C1', 'C2', 'C3'))
 
 }
 \keyword{CRM}

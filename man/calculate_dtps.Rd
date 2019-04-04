@@ -9,15 +9,15 @@ calculate_dtps(next_dose, cohort_sizes, prev_tox = c(), prev_dose =
 }
 \arguments{
 \item{next_dose}{An integer value representing the dose to be assigned to the
-first cohort of patients in the pathways.}
+first cohort of subjects in the pathways.}
 
 \item{cohort_sizes}{A vector of cohort sizes representing the size of the
 cohorts to be treated with the recommended dose at each decision point.}
 
-\item{prev_tox}{A vector of previous patient outcomes; 1 indicates toxicity,
+\item{prev_tox}{A vector of previous subject outcomes; 1 indicates toxicity,
 0 otherwise.}
 
-\item{prev_dose}{A vector of previous patient doses; The length of prev_dose
+\item{prev_dose}{A vector of previous subject doses; The length of prev_dose
 must be equal to that of prev_tox.}
 
 \item{dose_func}{A function such as applied_crm which produces an object of
@@ -25,11 +25,11 @@ class 'mtd'. To be used for calculation of the next recommended dose for
 each pathway permutation.}
 
 \item{...}{Any other arguments to be passed to dose_func; for specific
-arguements related to applied_crm see.}
+arguments related to applied_crm see.}
 }
 \value{
 Produces a dataframe containing all possible permutations of outcomes
-    for each cohort to considered based on cohort_sizes and the recommned
+    for each cohort to considered based on cohort_sizes and the recommended
     doses for such permutations.
 }
 \description{

@@ -17,9 +17,9 @@ summary_crm is used to return a dataframe of the summary of the
     output from applied_crm.
 }
 \details{
-This functions take an object of class "mtd" and produces a
+This function takes an object of class "mtd" and produces a
     dataframe containing a summary of information within the
-    object. Specifcally it shows the dose levels, prior probabilities, number
+    object. Specifically it shows the dose levels, prior probabilities, number
     of evaluable patients, number of DLTs and the posterior probability
     estimates along with confidence/probability intervals if estimated in the
     underlying object.
@@ -30,11 +30,10 @@ target <- 0.2
 tox    <- c(0, 0, 1, 0, 1, 1)
 level  <- c(1, 1, 1, 2, 2, 2)
 
-## crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-##                        coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-##                        stop_func = NULL, ...)
+crm_obj <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+                       global_coherent_esc = TRUE, stop_func = NULL)
 
-## summary_crm(crm_obj)
+summary_crm(crm_obj)
 
 }
 \references{

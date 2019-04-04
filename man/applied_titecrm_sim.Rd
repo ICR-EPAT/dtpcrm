@@ -17,20 +17,20 @@ dose levels.}
 
 \item{target}{The target DLT rate.}
 
-\item{max_sample_size}{The maximum number of patients to be recruited in any
+\item{max_sample_size}{The maximum number of subjects to be recruited in any
 simulation.}
 
 \item{first_dose}{The first dose level to tested.}
 
 \item{num_sims}{The total number of simulations to be run.}
 
-\item{cohort_size}{The size of the patient cohorts. Default is 1.}
+\item{cohort_size}{The size of the subject cohorts. Default is 1.}
 
-\item{obswin}{The observation period for total patient follow up.}
+\item{obswin}{The observation period for total subject follow up.}
 
-\item{minfu}{The minimum amount of follow-up required for each patient.}
+\item{minfu}{The minimum amount of follow-up required for each subjects.}
 
-\item{recrate}{The number of patients recruited per obswin.}
+\item{recrate}{The number of subjects recruited per obswin.}
 
 \item{dose_func}{The function to be employed in executing the CRM. Default is
 applied_titecrm.}

@@ -215,10 +215,10 @@ summary_crm <- function(x) {
 #' tox    <- c(0, 0, 1, 0, 1, 1)
 #' level  <- c(1, 1, 1, 2, 2, 2)
 #'
-#' ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-#' ##                    global_coherent_esc = TRUE, stop_func = NULL)
+#' crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
+#'                    global_coherent_esc = TRUE, stop_func = NULL)
 #'
-#' ##  plot_crm(crm, dose_labels = c("1", "2", "3"))
+#' plot_crm(crm, dose_labels = c("1", "2", "3"))
 #'
 #' @keywords CRM plot dtpcrm
 #'

@@ -16,22 +16,22 @@ dose levels.}
 
 \item{target}{The target DLT rate.}
 
-\item{max_sample_size}{The maximum number of patients to be recruited in any
+\item{max_sample_size}{The maximum number of subjects to be recruited in any
 simulation.}
 
 \item{first_dose}{The first dose level to tested.}
 
 \item{num_sims}{The total number of simulations to be run.}
 
-\item{cohort_size}{The size of the patient cohorts. Default is 1.}
+\item{cohort_size}{The size of the cohorts. Default is 1.}
 
 \item{dose_func}{The function to be employed in executing the CRM. Default is
 applied_crm.}
 
-\item{...}{Any other arguements detailed in dtp::applied_crm.}
+\item{...}{Any other arguements detailed in dtpcrm::applied_crm.}
 }
 \value{
-A list containg two further lists. The first of these lists contains
+A list containing two further lists. The first of these lists contains
     the operating charateristics of the design, the second contains the
     underlying data for each of the simulation iterations.
 }

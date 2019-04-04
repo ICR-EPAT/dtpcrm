@@ -36,8 +36,7 @@ stop_rule <- function(x){
 }
 
 ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-##                    stop_func = stop_rule)
+##                    global_coherent_esc = TRUE, stop_func = stop_rule)
 
 }
 \keyword{CRM}

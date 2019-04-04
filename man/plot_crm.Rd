@@ -34,22 +34,22 @@ to be used to when implementing the CRM for previous cohorts.}
 \item{...}{Arguments to be provided to dose_func detailing CRM specification.
 See applied_crm.}
 
-\item{ylim}{Undocumented item.}
+\item{ylim}{The y-axis range. Default is c(0, 1)}
 
-\item{lwd}{Undocumented item.}
+\item{lwd}{line width relative to the default (default=1). 2 is twice as wide. Default is 1.}
 
-\item{cex.axis}{Undocumented item.}
+\item{cex.axis}{The magnification to be used for axis annotation relative to the current setting of cex. Default is 1.}
 
-\item{cex.lab}{Undocumented item.}
+\item{cex.lab}{The magnification to be used for x and y labels relative to the current setting of cex. Default is 1.}
 
-\item{cex}{Undocumented item.}
+\item{cex}{A numerical value giving the amount by which plotting text and symbols should be magnified relative to the default. Default is 1.}
 
-\item{cohort.last}{Undocumented item.}
+\item{cohort.last}{If TRUE, the last cohort will have lwd = 6 for emphasis. Default is FALSE.}
 }
 \description{
-Provides funtionality for plotting the posterior estimates of
+Provides functionality for plotting the posterior estimates of
     probabilities of toxicity at each dose level for both the most recent
-    update and for past cohort updates if requested.
+    update and for past cohort updates if specified.
 }
 \details{
 Produces a plot of current dose-toxicity estimates including the
@@ -64,8 +64,7 @@ tox    <- c(0, 0, 1, 0, 1, 1)
 level  <- c(1, 1, 1, 2, 2, 2)
 
 ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-##                    stop_func = NULL)
+##                    global_coherent_esc = TRUE, stop_func = NULL)
 
 ##  plot_crm(crm, dose_labels = c("1", "2", "3"))
 

@@ -14,9 +14,9 @@ dose levels.}
 
 \item{target}{The target DLT rate.}
 
-\item{tox}{A vector of patient outcomes; 1 indicates toxicity, 0 otherwise.}
+\item{tox}{A vector of subject outcomes; 1 indicates toxicity, 0 otherwise.}
 
-\item{level}{A vector of dose levels assigned to patients. The length of
+\item{level}{A vector of dose levels assigned to subjects. The length of
 level must be equal to that of tox.}
 
 \item{no_skip_esc}{If FALSE, the method will not enforce no skipping of doses
@@ -54,7 +54,7 @@ An object of class "mtd" is returned as per package "dfcrm",
 }
 \description{
 applied_crm is used to execute the continual reassessment method
-    with specified design options to determine the dose for the next patient.
+    with specified design options to determine the dose for the next subject.
 }
 \details{
 For maximum likelihood estimation, the variance of the estimate of beta
@@ -67,8 +67,8 @@ prior on beta is normal with mean 0. Exponentiation of beta ensures an increasin
 dose-toxicity function.
 
 This function is largely a wrapper for the dfcrm function crm, it provides
-functionality for additional design choices for the CRM including global
-coherency and stopping for excess toxicity.
+functionality for additional design choices for the CRM including global coherency
+and stopping for excess toxicity and stopping when sufficient number of subjects are dosed at MTD
 }
 \examples{
 prior  <- c(0.1, 0.3, 0.5)

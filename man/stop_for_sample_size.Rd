@@ -9,13 +9,13 @@ stop_for_sample_size(x, max_sample_size)
 \arguments{
 \item{x}{An object of class 'mtd'.}
 
-\item{max_sample_size}{An integer; specifying the maxmium number of patients
+\item{max_sample_size}{An integer; specifying the maxmium number of subjects
 to be recruited.}
 }
 \description{
 This is a function for use with applied_crm for the stop_func
     arguement. The rule will suggest stopping in the scenario that a maximum
-    number of patients has been recruited.
+    number of subjects has been recruited.
 }
 \details{
 This function is an example of a possible stopping function to be
@@ -35,8 +35,7 @@ stop_rule <- function(x){
 }
 
 ## crm <- applied_crm(prior, target, tox, level, no_skip_esc = TRUE, no_skip_deesc = TRUE,
-##                    coherent_esc = FALSE, coherent_deesc = FALSE, global_coherent_esc = TRUE,
-##                    stop_func = stop_rule)
+##                    global_coherent_esc = TRUE, stop_func = stop_rule)
 
 }
 \keyword{CRM}

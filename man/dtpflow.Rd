@@ -7,19 +7,18 @@
 dtpflow(dtptable, cohort.labels = c('C1', 'C2', 'C3'))
 }
 \arguments{
-\item{dtptable}{a dataframe produced by calculate_dtps.}
+\item{dtptable}{a dataframe produced by calculate_dtps where cohort_sizes was of length 3.}
 
 \item{cohort.labels}{A vector of length 3, containing character strings for
 the cohort labels.}
 }
 \description{
 dtpflow will produce a flow diagram of the possible paths for
-    the next three cohorts of patients.
+    the next three cohorts of subjects.
 }
 \details{
 The function will produce a visual flow diagram for the first three
-    cohorts of the provided dataframe, a colour system is used to represent
-    escalation / de-escalation.
+    cohorts of the provided dataframe.
 }
 \examples{
 

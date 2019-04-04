@@ -14,15 +14,15 @@ dose levels.}
 
 \item{target}{The target DLT rate.}
 
-\item{tox}{A vector of patient outcomes; 1 indicates toxicity, 0 otherwise.}
+\item{tox}{A vector of subject outcomes; 1 indicates toxicity, 0 otherwise.}
 
-\item{level}{A vector of dose levels assigned to patients. The length of
+\item{level}{A vector of dose levels assigned to subjects. The length of
 level must be equal to that of tox.}
 
-\item{followup}{A vector of patient follow up times. The length must be equal
+\item{followup}{A vector of subject follow up times. The length must be equal
 to that of tox.}
 
-\item{obswin}{The observation period for total patient follow up.}
+\item{obswin}{The observation period for total subject follow up.}
 
 \item{no_skip_esc}{If FALSE, the method will not enforce no skipping of doses
 in escalation. Default is TRUE.}
@@ -52,11 +52,11 @@ toxicity rates.}  \item{mtd}{The updated estimate of the MTD.}
 posterior variance of the model parameter.}  \item{estimate}{Estimate of the
 model parameter.}  \item{method}{The method of estimation.}  \item{model}{The
 working model.}  \item{dosescaled}{The scaled doses obtained via backward
-substitution.}  \item{tox}{Patients' toxicity indications.}
-\item{level}{Dose levels assigned to patients.}  \item{followup}{Follow-up
-times of patients.}  \item{obswin}{Observation window with respect to which
-the MTD is defined.}  \item{weights}{Weights assigned to patients.}
-\item{entry}{Entry times of patients.}  \item{exit}{Exit times of patients.}
+substitution.}  \item{tox}{subjects' toxicity indications.}
+\item{level}{Dose levels assigned to subjects.}  \item{followup}{Follow-up
+times of subjects.}  \item{obswin}{Observation window with respect to which
+the MTD is defined.}  \item{weights}{Weights assigned to subjects.}
+\item{entry}{Entry times of subjects.}  \item{exit}{Exit times of subjects.}
 \item{scheme}{Weighting scheme.}  \item{stop}{A logical variable detailing if
 the trial should be stopped; TRUE to stop, FALSE otherwise}
 \item{stop_reason}{A detailed reason for why the trial should be
@@ -65,7 +65,7 @@ stopped. Only provided if stop is TRUE}
 \description{
 applied_titecrm is used to execute the time-to-event continual
     reassessment method with specified design options to determine the dose
-    for the next patient.
+    for the next subject.
 }
 \details{
 The adaptive weighting scheme is given in Cheung and Chappell (2000)

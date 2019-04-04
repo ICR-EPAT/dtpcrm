@@ -202,7 +202,7 @@ summary_crm <- function(x) {
 #' @param cex.axis The magnification to be used for axis annotation relative to the current setting of cex. Default is 1.
 #' @param cex.lab The magnification to be used for x and y labels relative to the current setting of cex. Default is 1.
 #' @param cex A numerical value giving the amount by which plotting text and symbols should be magnified relative to the default. Default is 1.
-#' @param cohort.If TRUE, the last cohort will have lwd = 6 for emphasis. Default is FALSE. 
+#' @param cohort.last If TRUE, the last cohort will have lwd = 6 for emphasis. Default is FALSE. 
 #'
 #' @details Produces a plot of current dose-toxicity estimates including the
 #'     priors and outputs a .png of plot to current directory if 'file' is

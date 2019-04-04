@@ -63,21 +63,21 @@
 #'     c(), dose_func = applied_crm, ...)
 #'
 #' @param next_dose An integer value representing the dose to be assigned to the
-#'     first cohort of patients in the pathways.
+#'     first cohort of subjects in the pathways.
 #' @param cohort_sizes A vector of cohort sizes representing the size of the
 #'     cohorts to be treated with the recommended dose at each decision point.
-#' @param prev_tox A vector of previous patient outcomes; 1 indicates toxicity,
+#' @param prev_tox A vector of previous subject outcomes; 1 indicates toxicity,
 #'     0 otherwise.
-#' @param prev_dose A vector of previous patient doses; The length of prev_dose
+#' @param prev_dose A vector of previous subject doses; The length of prev_dose
 #'     must be equal to that of prev_tox.
 #' @param dose_func A function such as applied_crm which produces an object of
 #'     class 'mtd'. To be used for calculation of the next recommended dose for
 #'     each pathway permutation.
 #' @param ... Any other arguments to be passed to dose_func; for specific
-#'     arguements related to applied_crm see.
+#'     arguments related to applied_crm see.
 #'
 #' @return Produces a dataframe containing all possible permutations of outcomes
-#'     for each cohort to considered based on cohort_sizes and the recommned
+#'     for each cohort to considered based on cohort_sizes and the recommended
 #'     doses for such permutations.
 #'
 #' @examples
@@ -101,25 +101,6 @@
 #' @export
 calculate_dtps = function(next_dose, cohort_sizes, prev_tox = c(),
                           prev_dose = c(), dose_func = applied_crm, ...) {
-  # Calculate Dose-Transition Pathways (DTP) for future cohorts in a CRM-like
-  #   trial. The first cohort will be receive next_dose, conditional
-  #   on having already observed prev_tox outcomes at prev_dose doses (optional)
-  # Dose decisions are made using dose_func, taking args tox and level, & ...
-  # dose_func should return either a dose-selection or an dfcrm::mtd-like object
-  # When using dose_func = applied_crm or dfcrm::crm, prior & target should
-  # be provided via ...
-  #
-  # Params:
-  # next_dose, the dose that will be given to the very next cohort
-  # cohort_sizes, vector of cohort sizes for future paths,
-  #   e.g. c(2, 3) considers a cohort of 2 followed by a cohort of 3
-  # prev_tox, vector of (bool) toxicity events already observed
-  # prev_dose, vector of dose-levels already given
-  # dose_func, function that will perform the dose-finding calculation
-  #            It should take tox and level as args.
-  #            Other args are passed through ...
-  #            It should return the next dose (int) or object like dfcrm:: mtd
-  #            Default function is applied_crm
 
   # Helper functions
   # 1) This function produces a row for the dtp data.frame
@@ -152,9 +133,3 @@ calculate_dtps = function(next_dose, cohort_sizes, prev_tox = c(),
   dtps[t(apply(is.na(dtps), 1, cumsum)) > 0 ] <- NA # change to NA for all columns after first NA
   return(dtps)
 }
-
-# order(paths[,1], paths[,2], paths[,3])
-# paths[order(paths[,1], paths[,2], paths[,3]), ]
-#
-# do.call(order, as.data.frame(paths))
-# paths[do.call(order, as.data.frame(paths)),]

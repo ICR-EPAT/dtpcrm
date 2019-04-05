@@ -42,7 +42,7 @@
 #' target <- 0.2
 #' true_tox <- c(0.05, 0.2, 0.35)
 #' first_dose <- 1
-#' num_sims <- 1000
+#' num_sims <- 100     # recommend doing 5000 simulations for the final design
 #' obswin = 80
 #'
 #' applied_titecrm_sim(true_tox = true_tox, prior = prior, target = target,

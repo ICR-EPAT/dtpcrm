@@ -13,7 +13,7 @@ Authors@R: c(person("Christina", "Yap", email = "yapchristina17@gmail.com",
 Maintainer: Christina Yap <yapchristina17@gmail.com>
 Description: Building on the 'dfcrm' R package, the 'dtpcrm' package provides the
     Dose Transition Pathways ('DTP') to project in advance the doses recommended
-    by a model-based design for subsequent patients (stay, escalate, de-escalate
+    by a model-based design for subsequent patients (stay, escalate, deescalate
     or stop early) using all the accumulated toxicity information. 'DTP' can be
     used as a design and an operational tool and can be displayed as a table or
     flow diagram. The 'dtpcrm' package also provides the modified Continual

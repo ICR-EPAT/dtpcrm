@@ -33,13 +33,13 @@ next_dose = applied_crm(prior = prior, target = target,
 
 dose_func <- applied_crm
 
-dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
+DTP = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
                       prev_dose = prev_dose, dose_func = applied_crm,
                       prior = prior, target = target)
 
-dtpflow(dtptable = dtps, cohort.labels = c('C1', 'C2', 'C3'))
+dtpflow(dtptable = DTP, cohort.labels = c('C1', 'C2', 'C3'))
 
 }
 \keyword{CRM}
+\keyword{DTP}
 \keyword{dtpcrm}
-\keyword{dtps}

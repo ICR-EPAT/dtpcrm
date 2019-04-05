@@ -14,7 +14,7 @@ estimate of MTD to suggest stopping for consensus.}
 }
 \description{
 This is a function for use with applied_crm for the stop_func
-    arguement. The rule will suggest stopping in the scenario that a
+    argument. The rule will suggest stopping in the scenario that a
     particular number of patients has already been treated at the current
     recommended MTD.
 }

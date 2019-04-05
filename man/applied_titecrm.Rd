@@ -2,7 +2,7 @@
 % Please edit documentation in R/applied_titecrm.R
 \name{applied_titecrm}
 \alias{applied_titecrm}
-\title{Execute the CRM}
+\title{Execute the TITE-CRM}
 \usage{
 applied_titecrm(prior, target, tox, level, followup, obswin,
     no_skip_esc = TRUE, no_skip_deesc = TRUE, global_coherent_esc = TRUE,
@@ -19,10 +19,10 @@ dose levels.}
 \item{level}{A vector of dose levels assigned to subjects. The length of
 level must be equal to that of tox.}
 
-\item{followup}{A vector of subject follow up times. The length must be equal
+\item{followup}{A vector of follow up times of subjects. The length must be equal
 to that of tox.}
 
-\item{obswin}{The observation period for total subject follow up.}
+\item{obswin}{The observation period with respect to which DLT is assessed.}
 
 \item{no_skip_esc}{If FALSE, the method will not enforce no skipping of doses
 in escalation. Default is TRUE.}
@@ -34,10 +34,10 @@ doses in de-escalation. Default is TRUE.}
 coherent escalation, that is, escalation if the overall rate of toxicity
 seen at the current dose level is above the target rate. Default is TRUE.}
 
-\item{stop_func}{An optional arguement to provide a function which will
-utilised alongside the CRM to determine if the trial should be stopped.}
+\item{stop_func}{An optional argument to provide a function which will
+utilised alongside the TITE-CRM to determine if the trial should be stopped.}
 
-\item{...}{Any other arguements detailed in dfcrm::titecrm.}
+\item{...}{Any other arguments detailed in dfcrm::titecrm.}
 }
 \value{
 An object of class "mtd" is returned as per package "dfcrm",
@@ -55,7 +55,7 @@ working model.}  \item{dosescaled}{The scaled doses obtained via backward
 substitution.}  \item{tox}{subjects' toxicity indications.}
 \item{level}{Dose levels assigned to subjects.}  \item{followup}{Follow-up
 times of subjects.}  \item{obswin}{Observation window with respect to which
-the MTD is defined.}  \item{weights}{Weights assigned to subjects.}
+DLT is assessed.}  \item{weights}{Weights assigned to subjects.}
 \item{entry}{Entry times of subjects.}  \item{exit}{Exit times of subjects.}
 \item{scheme}{Weighting scheme.}  \item{stop}{A logical variable detailing if
 the trial should be stopped; TRUE to stop, FALSE otherwise}

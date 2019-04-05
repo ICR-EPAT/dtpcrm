@@ -29,10 +29,10 @@ doses in de-escalation. Default is TRUE.}
 coherent escalation, that is, escalation if the overall rate of toxicity
 seen at the current dose level is above the target rate. Default is TRUE.}
 
-\item{stop_func}{An optional arguement to provide a function which will
+\item{stop_func}{An optional argument to provide a function which will
 utilised alongside the CRM to determine if the trial should be stopped.}
 
-\item{...}{Any other arguements detailed in dfcrm::crm.}
+\item{...}{Any other arguments detailed in dfcrm::crm.}
 }
 \value{
 An object of class "mtd" is returned as per package "dfcrm",
@@ -66,9 +66,9 @@ specified as logit (F(d,beta)) = intcpt + exp(beta) * d. For method="bayes", the
 prior on beta is normal with mean 0. Exponentiation of beta ensures an increasing
 dose-toxicity function.
 
-This function is largely a wrapper for the dfcrm function crm, it provides
+This function is largely a wrapper for the dfcrm function crm.  It provides
 functionality for additional design choices for the CRM including global coherency
-and stopping for excess toxicity and stopping when sufficient number of subjects are dosed at MTD
+and stopping for excess toxicity and stopping when sufficient number of subjects are dosed at MTD.
 }
 \examples{
 prior  <- c(0.1, 0.3, 0.5)

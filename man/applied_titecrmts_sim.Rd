@@ -72,6 +72,6 @@ Cheung, Y. K. (2011). Dose Finding by the Continual Reassessment Method. New
 York: Chapman & Hall/CRC Press.
 }
 \keyword{CRM}
-\keyword{Simulation}
-\keyword{TITE}
+\keyword{Simulations}
+\keyword{TITE-CRM}
 \keyword{dtpcrm}

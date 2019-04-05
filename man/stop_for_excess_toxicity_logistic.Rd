@@ -27,7 +27,7 @@ NA if trial should stop.}
 }
 \description{
 This is a function for use with applied_crm for the stop_func
-    arguement. The rule will suggest stopping in the scenario that the
+    argument. The rule will suggest stopping in the scenario that the
     probability of toxicity being greater than a specifed value at a defined
     dose is greater than some further specified certainty value.
 }

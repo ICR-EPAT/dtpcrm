@@ -14,7 +14,7 @@ to be recruited.}
 }
 \description{
 This is a function for use with applied_crm for the stop_func
-    arguement. The rule will suggest stopping in the scenario that a maximum
+    argument. The rule will suggest stopping in the scenario that a maximum
     number of subjects has been recruited.
 }
 \details{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dtps.R
 \name{calculate_dtps}
 \alias{calculate_dtps}
-\title{Produce the Dose transition pathways}
+\title{Produce the Dose Transition Pathways}
 \usage{
 calculate_dtps(next_dose, cohort_sizes, prev_tox = c(), prev_dose =
     c(), dose_func = applied_crm, ...)
@@ -29,7 +29,7 @@ arguments related to applied_crm see.}
 }
 \value{
 Produces a dataframe containing all possible permutations of outcomes
-    for each cohort to considered based on cohort_sizes and the recommended
+    for each cohort based on cohort_sizes and the recommended
     doses for such permutations.
 }
 \description{
@@ -50,11 +50,11 @@ next_dose = applied_crm(prior = prior, target = target,
 
 dose_func <- applied_crm
 
-dtps = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
+DTP = calculate_dtps(next_dose, cohort_sizes, prev_tox = prev_tox,
                       prev_dose = prev_dose, dose_func = applied_crm,
                       prior = prior, target = target)
 
 }
 \keyword{CRM}
+\keyword{DTP}
 \keyword{dtpcrm}
-\keyword{dtps}

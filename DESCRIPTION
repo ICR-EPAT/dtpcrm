@@ -16,7 +16,7 @@ Description: Building on the 'dfcrm' R package, the 'dtpcrm' package provides th
     by a model-based design for subsequent patients (stay, escalate, de-escalate
     or stop early) using all the accumulated toxicity information. 'DTP' can be
     used as a design and an operational tool and can be displayed as a table or
-    flow diagram. The dtpcrm package also provides the modified Continual
+    flow diagram. The 'dtpcrm' package also provides the modified Continual
     Reassessment Method ('CRM') and Time-to-event 'CRM' ('TITE-CRM') with added
     practical considerations to allow stopping early when there is sufficient
     evidence that the lowest dose is too toxic and/or there is a sufficient

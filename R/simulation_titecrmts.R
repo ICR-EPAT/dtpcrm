@@ -39,11 +39,13 @@
 #' York: Chapman & Hall/CRC Press.
 #'
 #' @examples
+#' \dontrun{
+#' # It may take quite long for large num_sims
 #' prior  <- c(0.1, 0.3, 0.5)
 #' target <- 0.2
 #' true_tox <- c(0.05, 0.2, 0.35)
 #' first_dose <- 1
-#' num_sims <- 100    # recommend doing 5000 simulations for the final design
+#' num_sims <- 1000
 #' obswin = 80
 #'
 #' applied_titecrmts_sim(true_tox = true_tox, prior = prior, target = target,
@@ -51,7 +53,7 @@
 #'                       cohort_size = 3, obswin = obswin, minfu = 20,
 #'                       recrate = 3, initdes = c(rep(1, 3), rep(2, 3), rep(3, 15)),
 #'                       dose_func = applied_titecrm)
-#'
+#' }
 #' @keywords CRM Simulations TITE-CRM dtpcrm
 #'
 #' @export

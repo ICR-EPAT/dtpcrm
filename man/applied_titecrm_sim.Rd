@@ -48,6 +48,8 @@ applied_titecrm_sim is used to simulate trials using the
     to determine the operating characteristics.
 }
 \examples{
+\dontrun{
+# It may take quite long for large num_sims
 prior  <- c(0.1, 0.3, 0.5)
 target <- 0.2
 true_tox <- c(0.05, 0.2, 0.35)
@@ -60,7 +62,7 @@ applied_titecrm_sim(true_tox = true_tox, prior = prior, target = target,
                               num_sims = num_sims, cohort_size = 3,
                               obswin = obswin, minfu = 20, recrate = 3,
                               dose_func = applied_titecrm)
-
+}
 }
 \references{
 O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual

@@ -41,6 +41,8 @@ applied_crm_sim is used to simulate trials using the continual
     operating characteristics.
 }
 \examples{
+\dontrun{
+# It may take quite long for large num_sims
 prior  <- c(0.1, 0.3, 0.5)
 target <- 0.2
 true_tox <- c(0.15, 0.25, 0.45)
@@ -49,7 +51,7 @@ num_sims <- 1000
 
 applied_crm_sim(true_tox, prior, target, max_sample_size = 30, first_dose,
                 num_sims, cohort_size = 1, dose_func = applied_crm)
-
+}
 }
 \references{
 O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual

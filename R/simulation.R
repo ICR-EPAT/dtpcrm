@@ -33,15 +33,17 @@
 #' York: Chapman & Hall/CRC Press.
 #'
 #' @examples
+#' \dontrun{
+#' # It may take quite long for large num_sims
 #' prior  <- c(0.1, 0.3, 0.5)
 #' target <- 0.2
 #' true_tox <- c(0.15, 0.25, 0.45)
 #' first_dose <- 1
-#' num_sims <- 100       # recommend doing 5000 simulations for the final design
+#' num_sims <- 1000
 #'
 #' applied_crm_sim(true_tox, prior, target, max_sample_size = 30, first_dose,
 #'                 num_sims, cohort_size = 1, dose_func = applied_crm)
-#'
+#' }
 #' @keywords CRM Simulations dtpcrm
 #'
 #' @export

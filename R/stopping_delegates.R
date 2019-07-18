@@ -162,8 +162,8 @@ stop_for_excess_toxicity_logistic <- function(x, tox_lim, prob_cert, dose = 1,
   post_beta_mean = x$estimate
   post_beta_var  = x$post.var
   post_beta_samp = stats::rnorm(nsamps, post_beta_mean, sqrt(post_beta_var))
-  post_prob_tox_samp = exp(x$intcpt + exp(post_beta_samp) * x$prior[dose]) /
-    (1 + exp(x$intcpt + exp(post_beta_samp) * x$prior[dose]))
+  post_prob_tox_samp = exp(x$intcpt + exp(post_beta_samp) * x$dosescaled[dose]) /
+    (1 + exp(x$intcpt + exp(post_beta_samp) * x$dosescaled[dose]))
   prob_too_toxic = mean(post_prob_tox_samp > tox_lim)
   stop_decision = prob_too_toxic > prob_cert
   x$stop = stop_decision

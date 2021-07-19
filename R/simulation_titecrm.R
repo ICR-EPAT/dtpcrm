@@ -68,6 +68,8 @@ applied_titecrm_sim <- function(true_tox, prior, target,
     tox <- c()
     level <- c()
     fu <- c()
+    dlt <- c() 
+    dlt_time <- c()
     dose <- first_dose
     stop <- FALSE
     stop_reason <- NULL
@@ -79,16 +81,36 @@ applied_titecrm_sim <- function(true_tox, prior, target,
 
       # Simulate outcomes for a cohort
       cohort_tox = stats::rbinom(n = cohort_size, size = 1, prob = true_tox[dose])
+      cohort_dlt <- rep(0, cohort_size)
       cohort_level = rep(dose, cohort_size)
       cohort_fu = (rectime * (cohort_size - 1)) - (rectime * c(0:(cohort_size-1))) + minfu # follow-up based on fixed accrual from recrate TODO allow for non fixed accrual
-      cohort_fu[cohort_tox == 1] <- obswin # weight of 1 for dlt patients
-
+      
+      # simulate DLT times
+      cohort_dlt_time <- c()
+      for (j in 1:cohort_size) {
+        if(cohort_tox[j] == 0){
+          cohort_dlt_time[j] <- NA
+        }
+        else {
+          cohort_dlt_time[j] <- runif(1,0, obswin)
+        }
+      }
 
       # Accumulate data
+      dlt_time <- c(dlt_time, cohort_dlt_time)
+      dlt <- c(dlt, cohort_dlt)
       tox <- c(tox, cohort_tox)
       level <- c(level, cohort_level)
       fu <- fu + (cohort_size * rectime) + minfu # add on additional follow-up for previous patients
       fu <- c(fu, cohort_fu)
+      for(k in 1:length(fu)){
+        if(tox[k] == 1){
+          if(fu[k] >= dlt_time[k]){
+            fu[k] <- obswi
+            dlt[k] <- 1
+          }
+        }
+      }
       fu <- pmin(fu, obswin) # fix follow-up to maximum of observational period
 
 

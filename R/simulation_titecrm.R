@@ -115,7 +115,7 @@ applied_titecrm_sim <- function(true_tox, prior, target,
 
 
       # Update the model
-      x <- dose_func(prior = prior, target = target, tox = tox, level = level,
+      x <- dose_func(prior = prior, target = target, tox = dlt, level = level,
                      followup = fu, obswin = obswin, ...)
       dose <- x$mtd
       stop <- ifelse(is.null(x$stop), FALSE, x$stop)

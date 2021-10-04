@@ -106,7 +106,7 @@ applied_titecrm_sim <- function(true_tox, prior, target,
       for(k in 1:length(fu)){
         if(tox[k] == 1){
           if(fu[k] >= dlt_time[k]){
-            fu[k] <- obswi
+            fu[k] <- obswin
             dlt[k] <- 1
           }
         }

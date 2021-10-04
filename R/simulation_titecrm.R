@@ -51,7 +51,7 @@
 #'                               num_sims = num_sims, cohort_size = 3,
 #'                               obswin = obswin, minfu = 20, recrate = 3,
 #'                               dose_func = applied_titecrm)
-#'                               
+#'
 #' @keywords CRM Simulations TITE dtpcrm
 #'
 #' @export
@@ -68,7 +68,7 @@ applied_titecrm_sim <- function(true_tox, prior, target,
     tox <- c()
     level <- c()
     fu <- c()
-    dlt <- c() 
+    dlt <- c()
     dlt_time <- c()
     dose <- first_dose
     stop <- FALSE
@@ -84,7 +84,7 @@ applied_titecrm_sim <- function(true_tox, prior, target,
       cohort_dlt <- rep(0, cohort_size)
       cohort_level = rep(dose, cohort_size)
       cohort_fu = (rectime * (cohort_size - 1)) - (rectime * c(0:(cohort_size-1))) + minfu # follow-up based on fixed accrual from recrate TODO allow for non fixed accrual
-      
+
       # simulate DLT times
       cohort_dlt_time <- c()
       for (j in 1:cohort_size) {
@@ -92,7 +92,7 @@ applied_titecrm_sim <- function(true_tox, prior, target,
           cohort_dlt_time[j] <- NA
         }
         else {
-          cohort_dlt_time[j] <- runif(1,0, obswin)
+          cohort_dlt_time[j] <- stats::runif(1,0, obswin)
         }
       }
 

@@ -61,7 +61,7 @@ applied_titecrm_sim(true_tox = true_tox, prior = prior, target = target,
                               num_sims = num_sims, cohort_size = 3,
                               obswin = obswin, minfu = 20, recrate = 3,
                               dose_func = applied_titecrm)
-                              
+
 }
 \references{
 O'Quigley, J. O., Pepe, M., and Fisher, L. (1990). Continual

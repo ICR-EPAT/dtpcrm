@@ -4,9 +4,17 @@
 \alias{applied_crm}
 \title{Execute the CRM}
 \usage{
-applied_crm(prior, target, tox, level, no_skip_esc = TRUE,
-  no_skip_deesc = TRUE, global_coherent_esc = TRUE, stop_func = NULL,
-  ...)
+applied_crm(
+  prior,
+  target,
+  tox,
+  level,
+  no_skip_esc = TRUE,
+  no_skip_deesc = TRUE,
+  global_coherent_esc = TRUE,
+  stop_func = NULL,
+  ...
+)
 }
 \arguments{
 \item{prior}{A vector of prior estimates of toxicity probabilties for the
@@ -61,7 +69,7 @@ For maximum likelihood estimation, the variance of the estimate of beta
     (post.var) is approximated by the posterior variance of beta with a
     dispersed normal prior.
 
-The empiric model is specified as F(d, beta) = d^{exp(beta)}. The logistic model is
+The empiric model is specified as \eqn{F(d, \beta) = d^{\exp(\beta)}}{F(d, beta) = d^exp(beta)}. The logistic model is
 specified as logit (F(d,beta)) = intcpt + exp(beta) * d. For method="bayes", the
 prior on beta is normal with mean 0. Exponentiation of beta ensures an increasing
 dose-toxicity function.

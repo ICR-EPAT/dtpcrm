@@ -4,3 +4,5 @@ format.sh
 .clang-format
 .travis.yml
 README.md
+^\.github$
+^codecov\.yml$

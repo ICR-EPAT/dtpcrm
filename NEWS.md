@@ -1,5 +1,6 @@
 # dtpcrm 0.1.2
 
+* Xiaoran Lai takes over as maintainer; Christina Yap remains an author.
 * `applied_titecrm_sim()` now simulates a DLT time for each patient with a
   toxicity, drawn uniformly over the observation window. A DLT only counts
   towards the model once the patient's follow-up has reached that time;

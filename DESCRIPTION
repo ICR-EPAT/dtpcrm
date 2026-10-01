@@ -3,14 +3,16 @@ Type: Package
 Title: Dose Transition Pathways for Continual Reassessment Method
 Version: 0.1.2
 Authors@R: c(person("Christina", "Yap", email = "yapchristina17@gmail.com",
-                  role = c("aut", "cre")),
+                  role = c("aut")),
              person("Daniel", "Slade", email = "D.Slade@bham.ac.uk",
-                  role = c("aut")), 
+                  role = c("aut")),
              person("Kristian", "Brock", email = "k.brock@bham.ac.uk",
                   role = c("aut")),
              person("Yi", "Pan", email = "ypan1988@gmail.com",
-                  role = c("aut")))
-Maintainer: Christina Yap <yapchristina17@gmail.com>
+                  role = c("aut")),
+             person("Xiaoran", "Lai", email = "xiaoran.lai@icr.ac.uk",
+                  role = c("cre"),
+                  comment = c(ORCID = "0000-0002-7364-3993")))
 Description: Provides the dose transition pathways (DTP) to project in advance
     the doses recommended by a model-based design for subsequent patients (stay,
     escalate, deescalate or stop early) using all the accumulated toxicity

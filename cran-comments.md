@@ -5,6 +5,12 @@ This is an update of dtpcrm (0.1.1 -> 0.1.2). It fixes the
 results page, and includes a change to the TITE-CRM simulation
 (see NEWS.md).
 
+## Maintainer change
+
+The maintainer changes from Christina Yap <yapchristina17@gmail.com>
+to Xiaoran Lai <xiaoran.lai@icr.ac.uk>. Christina Yap remains an author
+and will confirm the change by email to CRAN.
+
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes

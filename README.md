@@ -3,6 +3,8 @@
 [![cran version](http://www.r-pkg.org/badges/version/dtpcrm)](https://cran.r-project.org/web/packages/dtpcrm)
 [![downloads](http://cranlogs.r-pkg.org/badges/dtpcrm)](http://cranlogs.r-pkg.org/badges/dtpcrm)
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/dtpcrm)](http://cranlogs.r-pkg.org/badges/grand-total/dtpcrm)
+[![R-CMD-check](https://github.com/ICR-EPAT/dtpcrm/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ICR-EPAT/dtpcrm/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/ICR-EPAT/dtpcrm/branch/main/graph/badge.svg)](https://codecov.io/gh/ICR-EPAT/dtpcrm)
 
 ## Features
 * Design and Conduct an applied CRM and TITE-CRM with practical considerations which include stopping early for excessive toxicity and when sufficient number of subjects have been dosed at the Maximum Tolerated Dose
